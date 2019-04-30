@@ -44,9 +44,14 @@ public String getTreat(){
 		String lr = c.target("http://localhost:13515/api/ApiReclamation/Traiter").request().get().readEntity(String.class);
 		return lr;
 	}
+public String getNonTreat(){
+	
+	String lr = c.target("http://localhost:13515/api/ApiReclamation/NonTraiter").request().get().readEntity(String.class);
+	return lr;
+}
 public String getByUser(){
 	
-	String lr = c.target("http://localhost:13515/api/ApiReclamation/GetByU?id="+2).request().get().readEntity(String.class);
+	String lr = c.target("http://localhost:13515/api/ApiReclamation/GetByU?id="+6).request().get().readEntity(String.class);
 	return lr;
 }
 	@Override
@@ -58,6 +63,36 @@ public String getByUser(){
 		WebTarget target = client.target("http://localhost:13515/api/ApiReclamation/Create");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
+		return response.readEntity(String.class);
+	}
+	@Override
+	public String Update(String s )
+	{
+	
+		
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target("http://localhost:13515/api/ApiReclamation/Update");
+		Invocation.Builder invocationBuilder = target.request();
+		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
+		return response.readEntity(String.class);
+	}
+	@Override
+	public String Delete (int id  )
+	{
+	
+		String lr = c.target("http://localhost:13515/api/ApiReclamation/Delete?id="+id).request().delete().readEntity(String.class);
+		return lr;
+	
+	}
+	@Override
+	public String Treat (String s )
+	{
+	
+
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target("http://localhost:13515/api/ApiReclamation/Traitement");
+		Invocation.Builder invocationBuilder = target.request();
+		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
 	}
 }

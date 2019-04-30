@@ -20,13 +20,10 @@ Description
 <td>
 Date</td>
 <td>
-User
-</td>
-<td>
-Treat
+user
 </td>
 </tr>
-<c:forEach items="#{reclamation.getNT()}" var="rec">
+<c:forEach items="#{reclamation.getT()}" var="rec">
 <tr>
 <td>
 <h:outputText value="${rec.get('objet')}" />
@@ -41,9 +38,6 @@ Treat
 <td>
 <h:outputText value="${rec.get('user')}" />
 </td>
-<td>
-<h:commandButton action="#{reclamation.treat(rec.get('id'))}"
-value="Treat" /></td>
 </tr>
 
 </c:forEach>

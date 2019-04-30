@@ -17,16 +17,12 @@ Object
 <td>
 Description
 </td>
+
 <td>
-Date</td>
-<td>
-User
-</td>
-<td>
-Treat
+Delete
 </td>
 </tr>
-<c:forEach items="#{reclamation.getNT()}" var="rec">
+<c:forEach items="#{reclamation.getByUser()}" var="rec">
 <tr>
 <td>
 <h:outputText value="${rec.get('objet')}" />
@@ -35,15 +31,20 @@ Treat
 <td>
 <h:outputText value="${rec.get('description')}" />
 </td>
-<td>
-<h:outputText value="${rec.get('date')}" />
+
+<c:if test="#{ rec.get('etat') eq 0}">
+   <td>
+<h:commandButton action="#{reclamation.delete(rec.get('id'))}"
+value="Delete" />
 </td>
-<td>
-<h:outputText value="${rec.get('user')}" />
+
+</c:if>
+<c:if test="#{ rec.get('etat') eq 1}">
+   <td>
+<h:outputText value="trèterr" />
+
 </td>
-<td>
-<h:commandButton action="#{reclamation.treat(rec.get('id'))}"
-value="Treat" /></td>
+</c:if>
 </tr>
 
 </c:forEach>
