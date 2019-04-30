@@ -29,22 +29,21 @@ Delete
 </td>
 
 <td>
-<h:outputText value="${rec.get('description')}" />
+<h:outputText value="${rec.get('etat')}" />
 </td>
-
-<c:if test="#{ rec.get('etat') eq 0}">
-   <td>
+ <td>
+<c:if test="#{ rec.get('etat') == 0}">
+  
 <h:commandButton action="#{reclamation.delete(rec.get('id'))}"
 value="Delete" />
-</td>
 
 </c:if>
-<c:if test="#{ rec.get('etat') eq 1}">
-   <td>
-<h:outputText value="trèterr" />
+<c:if test="#{ rec.get('etat') == 1}">
+  
+<h:outputText value="Treat" />
 
-</td>
 </c:if>
+</td>
 </tr>
 
 </c:forEach>
