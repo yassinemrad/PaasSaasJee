@@ -2,6 +2,8 @@ package reclamation;
 
 
 
+import java.util.ArrayList;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -20,7 +22,11 @@ import ReclamationService.responseRemote;
 @ManagedBean
 @RequestScoped
 
-public class test {
+public class Reclamation {
+	private String object ;
+	private String description ;
+  
+	
 	@EJB
 	private responseRemote rec ;
 
@@ -31,17 +37,18 @@ public class test {
 	@GET
 	
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-	public void getAll(){
+	public ArrayList<Object> getAll(){
 		
 		String lr= rec.getAll();		       
-        JSONArray array = new JSONArray(lr);
+		JSONArray  array = new JSONArray(lr);
+		ArrayList<Object> al=new ArrayList<Object>();
         for (int i = 0; i < array.length(); i++) {
-            
-        	JSONObject obj =array.getJSONObject(i);
-        	System.out.println(obj.getString("description"));
-        	System.out.println(obj.getInt("id"));
+            al.add(array.get(i));
+        	//JSONObject obj =array.getJSONObject(i);
+        //	System.out.println(obj.getString("description"));
+       // 	System.out.println(obj.getInt("id"));
         }
-		
+		return al;
 	}
 	@GET
 	
@@ -63,12 +70,25 @@ public class test {
 	public void add()
 	{
 		 String jsonString = new JSONObject()
-                 .put("objet", "Hello World!")
-                 .put("description", "Hello my World!")
+                 .put("objet", object)
+                 .put("description", description)
                  .put("user", 6).toString();
 		rec.Add(jsonString);
 		 //rec.getByUser();
 	}
+	public String getObject() {
+		return object;
+	}
+	public void setObject(String object) {
+		this.object = object;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 
 
 }

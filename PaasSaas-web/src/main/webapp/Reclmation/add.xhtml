@@ -3,20 +3,38 @@
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
-template="template/template.xhtml">
+template="/template/template.xhtml">
 <ui:param name="page_name" value="Accueil" />
 <ui:define name="content">
-<h:panelGroup>
+
 <h:form>
-<h:commandButton value="rec"
-action="#{test.getByUser()}" />
+<table>
+<tr>
+<td>
+<h:outputText value="Object" />
+</td>
+<td>
+ <h:inputText value="#{reclamation.object}" />
+ </td>
+</tr>
+<tr>
+<td>
+<h:outputText value="Description" /> 
+</td>
+<td>
+<h:inputSecret value="#{reclamation.description}" />
 
 
-
-
-
-
+ </td>
+</tr>
+<tr>
+<td></td>
+<td>
+<h:commandButton value="rec" action="#{reclamation.add()}" />
+</td>
+</tr>
+</table>
 </h:form>
-</h:panelGroup>
+
 </ui:define>
 </ui:composition>
