@@ -8,9 +8,15 @@ template="template/template.xhtml">
 <ui:define name="content">
 <h:panelGroup>
 <h:form>
-<h:outputText value="titre" /> <h:inputText value="#{suggestion.titre}" />
-<h:outputText value="description" /> <h:inputText value="#{suggestion.description}" />
-<h:outputText value="auteur" /> <h:inputText value="#{suggestion.auteur}" />
+<h:outputText value="titre" /> <h:inputText value="#{suggestion.titre}" /><br/>
+<h:outputText value="description" /> <h:inputText value="#{suggestion.description}" /><br/>
+<h:outputText value="auteur" /> <h:inputText value="#{suggestion.auteur}" /><br/>
+<h:outputText value="type"></h:outputText>
+<h:selectOneMenu value="#{suggestion.priorite}">
+<f:selectItem itemLabel="System Failure" itemValue="0"/>
+<f:selectItem itemLabel="Feedback" itemValue="1"/>
+<f:selectItem itemLabel="Improvements" itemValue="2"/>
+</h:selectOneMenu>
 <h:commandButton value="rec"
 action="#{suggestion.add()}" />
 
