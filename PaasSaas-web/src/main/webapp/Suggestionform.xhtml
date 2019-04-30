@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="template/template.xhtml">
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content">
+<h:panelGroup>
+<h:form>
+<h:outputText value="titre" /> <h:inputText value="#{suggestion.titre}" />
+<h:outputText value="description" /> <h:inputSecret value="#{suggestion.description}" />
+<h:outputText value="auteur" /> <h:inputSecret value="#{suggestion.auteur}" />
+<h:commandButton value="rec"
+action="#{suggestion.add()}" />
+
+
+</h:form>
+</h:panelGroup>
+</ui:define>
+</ui:composition>
