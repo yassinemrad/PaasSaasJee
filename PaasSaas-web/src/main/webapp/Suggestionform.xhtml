@@ -9,8 +9,8 @@ template="template/template.xhtml">
 <h:panelGroup>
 <h:form>
 <h:outputText value="titre" /> <h:inputText value="#{suggestion.titre}" />
-<h:outputText value="description" /> <h:inputSecret value="#{suggestion.description}" />
-<h:outputText value="auteur" /> <h:inputSecret value="#{suggestion.auteur}" />
+<h:outputText value="description" /> <h:inputText value="#{suggestion.description}" />
+<h:outputText value="auteur" /> <h:inputText value="#{suggestion.auteur}" />
 <h:commandButton value="rec"
 action="#{suggestion.add()}" />
 
