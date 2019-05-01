@@ -5,7 +5,8 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 template="template/template.xhtml"
-xmlns:c="http://java.sun.com/jsp/jstl/core">
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
 <ui:param name="page_name" value="Accueil" />
 <ui:define name="content">
 <h:panelGroup>
@@ -19,6 +20,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
     <script src="Template/lib/bootstrap/js/bootstrap.min.js"></script>
 	<link href="/Content/font-awesome.css" rel="stylesheet" type="text/css"/>
 	<link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	
  </h:head> 
  
  
@@ -51,8 +53,11 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
   <div class="panel-body" id="${item.get('titre')}"> Description: <h:outputText value="${item.get('description')}"/><br/></div>
   <div style="overflow: hidden;" class="panel-footer" id="${item.get('titre')}">Auteur : <h:outputText value="${item.get('auteur')}"/>
   
-  <h:commandButton style="float:right" class="btn btn-primary" value="Vote (${item.get('nbvote')})"  action="#{suggestion.Vote(item.get('Idsug'))}" />
-  
+  	
+
+ 
+<h:commandButton style="float:right"  class="btn btn-primary" value="Vote (${item.get('nbvote')})"  action="#{suggestion.Vote(item.get('Idsug'))}" />
+
   </div>
 </div>
  		</c:if>
