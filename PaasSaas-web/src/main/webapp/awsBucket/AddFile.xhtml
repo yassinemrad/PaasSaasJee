@@ -4,50 +4,37 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:c="http://java.sun.com/jsp/jstl/core"
-template="/template/template.xhtml">
+template="/template/template.xhtml"
+xmlns:t="http://myfaces.apache.org/tomahawk">
 <ui:param name="page_name" value="Accueil" />
 <ui:define name="content">
 
 <h:form>
-<h:commandButton action="#{reclamation.redirectNew()}" value="New Reclamations" />
 <br></br>
+<h:outputText value="You have  #{awsbucket.listeFile.size()} Files" /> 
 <table border="1">
 <tr>
 <td>
-Object
+Name
 </td>
-<td>
-Description
-</td>
-<td>
-Date</td>
-<td>
-user
-</td>
+
+
 </tr>
-<c:forEach items="#{reclamation.getT()}" var="rec">
+<c:forEach items="#{awsbucket.getFile()}" var="bac">
 <tr>
 <td>
-<h:outputText value="${rec.get('objet')}" />
-</td>
-
-<td>
-<h:outputText value="${rec.get('description')}" />
-</td>
-<td>
-<h:outputText value="${rec.get('date')}" />
-</td>
-<td>
-<h:outputText value="${rec.get('user')}" />
+<h:outputText value="${bac}" />
 </td>
 </tr>
-
 </c:forEach>
 </table>
 
 
 
 </h:form>
-
+ <h:form  method="post" enctype="multipart/form-data">
+ <h:inputFile id="file"  value="#{awsbucket.uf}"/> 
+    <h:commandButton id="button" action="#{awsbucket.addFile()}" value="Upload"/>
+ </h:form>
 </ui:define>
 </ui:composition>

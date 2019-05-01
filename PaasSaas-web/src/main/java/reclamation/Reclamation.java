@@ -46,9 +46,7 @@ public class Reclamation {
 		ArrayList<Object> al=new ArrayList<Object>();
         for (int i = 0; i < array.length(); i++) {
             al.add(array.get(i));
-        	//JSONObject obj =array.getJSONObject(i);
-        //	System.out.println(obj.getString("description"));
-       // 	System.out.println(obj.getInt("id"));
+      
         }
 		return al;
 	}
@@ -62,9 +60,7 @@ public class Reclamation {
 		ArrayList<Object> al=new ArrayList<Object>();
         for (int i = 0; i < array.length(); i++) {
             al.add(array.get(i));
-        	//JSONObject obj =array.getJSONObject(i);
-        //	System.out.println(obj.getString("description"));
-       // 	System.out.println(obj.getInt("id"));
+        
         }
 		return al;
 	}
@@ -78,9 +74,6 @@ public class Reclamation {
     	ArrayList<Object> al=new ArrayList<Object>();
         for (int i = 0; i < array.length(); i++) {
         	  al.add(array.get(i));
-        	//JSONObject obj =array.getJSONObject(i);
-        	//System.out.println(obj.getString("description"));
-        	//System.out.println(obj.getInt("id"));
         }
         return al;
 	}
@@ -129,6 +122,40 @@ public class Reclamation {
                 .toString();
 		rec.Treat(jsonString);
 		 //rec.getByUser();
+	}
+	
+	
+	@GET
+	
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public Object getUSerById(int id){
+		
+		String lr= rec.getUserById(id)		 ;      
+		//JSONArray  array = new JSONArray(lr);
+		//ArrayList<Object> al=new ArrayList<Object>();
+		JSONObject js=new JSONObject(lr);
+      
+		return js;
+	}
+	public String redirectOld()
+	{
+		String navigateTo = "oldReclamation?faces-redirect=true";
+		return navigateTo;
+	}
+	public String redirectNew()
+	{
+		String navigateTo = "display?faces-redirect=true";
+		return navigateTo;
+	}
+	public String redirectCreate()
+	{
+		String navigateTo = "add?faces-redirect=true";
+		return navigateTo;
+	}
+	public String redirectMyRec()
+	{
+		String navigateTo = "myReclamations?faces-redirect=true";
+		return navigateTo;
 	}
 	public String getObject() {
 		return object;

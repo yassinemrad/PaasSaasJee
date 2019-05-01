@@ -3,38 +3,30 @@
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
 template="/template/template.xhtml">
 <ui:param name="page_name" value="Accueil" />
 <ui:define name="content">
 
 <h:form>
-<table>
-<tr>
-<td>
-<h:outputText value="Object" />
-</td>
-<td>
- <h:inputText value="#{reclamation.object}" />
- </td>
-</tr>
-<tr>
-<td>
-<h:outputText value="Description" /> 
-</td>
-<td>
-<h:inputText value="#{reclamation.description}" />
+<h:commandButton action="#{awsbucket.redirectAddBacket()}" value="Create Backet" />
+
+<br></br>
+<h:outputText value="You have  #{awsbucket.getliste().size()} Backet storage" /> 
+<br></br>
+<table border="1">
+
+<c:forEach items="#{awsbucket.getliste()}" var="bac">
 
 
- </td>
-</tr>
-<tr>
-<td></td>
-<td>
-<h:commandButton value="Add" action="#{reclamation.add()}" />
-<h:commandButton value="Cancel" action="#{reclamation.redirectMyRec()}" />
-</td>
-</tr>
+
+<h:commandLink action="#{awsbucket.redirectlistFile(bac.get('name'))}" value="${bac.get('name')}" href="AddFile" >
+</h:commandLink>
+</c:forEach>
 </table>
+
+
+
 </h:form>
 
 </ui:define>

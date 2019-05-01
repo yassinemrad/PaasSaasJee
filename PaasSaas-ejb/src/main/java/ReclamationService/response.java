@@ -44,6 +44,11 @@ public String getTreat(){
 		String lr = c.target("http://localhost:13515/api/ApiReclamation/Traiter").request().get().readEntity(String.class);
 		return lr;
 	}
+public String getUserById(int id){
+	
+	String lr = c.target("http://localhost:13515/api/ApiUser/GetByid?id="+id).request().get().readEntity(String.class);
+	return lr;
+}
 public String getNonTreat(){
 	
 	String lr = c.target("http://localhost:13515/api/ApiReclamation/NonTraiter").request().get().readEntity(String.class);

@@ -15,4 +15,6 @@ public interface responseRemote {
 	public String Update(String s );
 	public String getTreat();
 	public String getNonTreat();
-	public String Treat (String s   );}
+	public String Treat (String s   );
+	public String getUserById(int id);
+	}

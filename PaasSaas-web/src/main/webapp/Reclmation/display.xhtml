@@ -9,6 +9,9 @@ template="/template/template.xhtml">
 <ui:define name="content">
 
 <h:form>
+<h:commandButton action="#{reclamation.redirectOld()}" value="Old Reclamations" />
+<br></br>
+<h:outputText value="You have  #{reclamation.getNT().size()} reclamations no treat" /> 
 <table border="1">
 <tr>
 <td>
@@ -39,7 +42,7 @@ Treat
 <h:outputText value="${rec.get('date')}" />
 </td>
 <td>
-<h:outputText value="${rec.get('user')}" />
+<h:outputText value="#{reclamation.getUSerById(rec.get('user')).get('FirstName')}" />
 </td>
 <td>
 <h:commandButton action="#{reclamation.treat(rec.get('id'))}"
