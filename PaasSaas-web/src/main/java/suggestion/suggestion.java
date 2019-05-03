@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONObject;
 
+import StatService.StatRespRemote;
 import SugestionService.Sugestresp;
 import SugestionService.SugestrespRemote;
 
@@ -47,7 +48,8 @@ public class suggestion {
 
 	@EJB
 	private SugestrespRemote sug ;
-	
+	@EJB
+	private StatRespRemote stat;
 
 	
 	Sugestresp j;
@@ -146,6 +148,53 @@ public void setAuteur(String auteur) {
 	this.auteur = auteur;
 }
 
+@GET
+@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+public ArrayList<Object> TaskesById(){
+	
+	String lr= stat.getAlls(5);		       
+    JSONArray array = new JSONArray(lr);
+    ArrayList<Object> listdata = new ArrayList<Object>();     
+    
+    if (array != null) { 
+       for (int i=0;i<array.length();i++){ 
+        listdata.add(array.get(i));
+        System.out.println(array.get(i));
+       } 
+    }
+  
+   // 	System.out.println(array);
+    	//System.out.println(obj.getInt("id"));
+    return listdata;
+	
+}
+@GET
+@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+public ArrayList<Object> proj(){
+	
+	String lr= stat.getAllp();		       
+    JSONArray array = new JSONArray(lr);
+    ArrayList<Object> listdata = new ArrayList<Object>();     
+    
+    if (array != null) { 
+       for (int i=0;i<array.length();i++){ 
+        listdata.add(array.get(i));
+        System.out.println(array.get(i));
+       } 
+    }
+  
+   // 	System.out.println(array);
+    	//System.out.println(obj.getInt("id"));
+    return listdata;
+	
+}
 
+public StatRespRemote getStat() {
+	return stat;
+}
+
+public void setStat(StatRespRemote stat) {
+	this.stat = stat;
+}
 
 }

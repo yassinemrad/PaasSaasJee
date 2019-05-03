@@ -64,4 +64,6 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
 	}
+	
+	
 }

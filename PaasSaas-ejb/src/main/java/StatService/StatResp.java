@@ -49,4 +49,16 @@ public String getprogdoing(int id){
 	String lr = c.target("http://localhost:13515/api/StatApi/etatprogdoing?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
+
+
+
+
+public String getAlls(int id){
+	String lr = c.target("http://localhost:13515/api/Statapi/listt?id="+id).request().get().readEntity(String.class);
+	return lr;
+}
+public String getAllp(){
+	String lr = c.target("http://localhost:13515/api/Statapi/listp").request().get().readEntity(String.class);
+	return lr;
+}
 }
