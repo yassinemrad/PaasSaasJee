@@ -27,15 +27,14 @@
 <h:outputText value="${rec.get('description')}" />
 </td>
  <td>
-<c:if test="#{ rec.get('etat') == 0}">
+<c:if test="#{ rec.get('etat') == 1}">
   
-<h:commandButton action="#{reclamation.delete(rec.get('id'))}"
-value="Delete" />
+
 
 								<h:commandButton action="#{reclamation.delete(rec.get('id'))}"
 									value="Delete" />
 
-							</c:if> <c:if test="#{ rec.get('etat') == 1}">
+							</c:if> <c:if test="#{ rec.get('etat') == 0}">
 
 								<h:outputText value="Treat" />
 
