@@ -62,8 +62,6 @@ public String getByUser(){
 	@Override
 	public String Add(String s )
 	{
-	
-		
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://localhost:13515/api/ApiReclamation/Create");
 		Invocation.Builder invocationBuilder = target.request();

@@ -10,6 +10,9 @@ import java.util.Scanner;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIOutput;
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.servlet.http.Part;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.MediaType;
@@ -61,10 +64,17 @@ public ArrayList<Object> getliste(){
 	return al;
 }
 
-public  List<String> getFile()
+//public void getFile(AjaxBehaviorEvent event)
+public List<String> getFile(String names)
+
 {
-	System.out.println(Backet);
-	return u.ListFile("javaeearctictest");
+	//System.out.println("backet="+event);
+//	String names=name.toString();
+	ListeFile=u.ListFile(names);
+	System.out.println("liste file="+ListeFile);
+	return ListeFile;
+
+
 }
 public String redirectlistFile(String name)
 {
@@ -72,7 +82,7 @@ public String redirectlistFile(String name)
 		Backet =name;
 
 	
-	return "AddFile?faces-redirect=true";
+	return "AddFile?faces-redirect=true&backet="+name;
 		
 }
 public void addFile() throws IOException

@@ -38,7 +38,7 @@ user
 <h:outputText value="${rec.get('date')}" />
 </td>
 <td>
-<h:outputText value="${rec.get('user')}" />
+<h:outputText value="#{reclamation.getUSerById(rec.get('user')).get('FirstName')}" />
 </td>
 </tr>
 
