@@ -33,6 +33,7 @@ public class Awsbucket {
 private Part   uf ;	
 private String Backet ;
 private List<String> ListeFile ;
+private String FileName ;
 	@EJB
 	private uploadRemote u ;
 
@@ -40,13 +41,14 @@ public void list()
 {
 	u.listBackets();
 }
-public void addBacket()
+public String addBacket()
 {
 	String jsonString = new JSONObject()
             .put("name", Backet)
             
             .put("user", 6).toString();
 	u.createBucket(Backet, jsonString);
+	return "display?faces-redirect=true";
 }
 
 @GET
@@ -71,10 +73,14 @@ public List<String> getFile(String names)
 	//System.out.println("backet="+event);
 //	String names=name.toString();
 	ListeFile=u.ListFile(names);
-	System.out.println("liste file="+ListeFile);
+//	System.out.println("liste file="+ListeFile);
 	return ListeFile;
 
 
+}
+public void deleteFile(String bucket , String file)
+{
+	u.deleteFile(bucket, file);
 }
 public String redirectlistFile(String name)
 {
@@ -85,11 +91,11 @@ public String redirectlistFile(String name)
 	return "AddFile?faces-redirect=true&backet="+name;
 		
 }
-public void addFile() throws IOException
+public void addFile(String backet) throws IOException
 {
-	  
+	 // System.out.println("backettttttttt="+this.Backet);
 	File f=new File(uf.getSubmittedFileName());
-	u.uploadfile("javaeearctictest", f);
+	u.uploadfile(backet,f,FileName);
 }
 public String redirectAddBacket()
 {
@@ -113,6 +119,12 @@ public List<String> getListeFile() {
 }
 public void setListeFile(List<String> listeFile) {
 	ListeFile = listeFile;
+}
+public String getFileName() {
+	return FileName;
+}
+public void setFileName(String fileName) {
+	FileName = fileName;
 }
 
 

@@ -25,6 +25,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
@@ -41,10 +42,10 @@ public class upload implements uploadRemote, uploadLocal {
 	AWSCredentials Creadendials =new BasicAWSCredentials("AKIAIXT2WGXMUQFQ5V2Q","VWGkEbZlZbmKG1sctYQT9bgqD1t5bL+OXYAQ8L/N	");
 	final AmazonS3 s3=AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Creadendials)).withRegion(Regions.EU_WEST_1).build();
 	
-	public void uploadfile(String bac , File f)
+	public void uploadfile(String bac , File f , String nom)
 	{
 		
-		s3.putObject(bac,"a.txt", f);
+		s3.putObject(bac,nom, f);
 	//	AmazonS3 s3client=new AmazonS3Client(credentials);
 		//try{
 			//File file=new File(uploadfilename);
@@ -72,15 +73,16 @@ public class upload implements uploadRemote, uploadLocal {
 		String lr = c.target("http://localhost:13515/api/ApiBuckets/GetByU?id="+6).request().get().readEntity(String.class);
 		return lr;
 	}
-	public void listBackets()
+	public List<String> listBackets()
 	{
-		
-		//List<Bucket> buckets=s3.listBuckets();
-		//for(Bucket b:buckets)
-		//{
+		List<String> lb=new ArrayList<String>();
+		List<Bucket> buckets=s3.listBuckets();
+		for(Bucket b:buckets)
+		{
+			lb.add(b.getName());
 		//	System.out.println(b.getName());
-	//	}
-		
+		}
+		return lb ;
 	}
 	public void createBucket(String name,String s)
 	{
@@ -90,5 +92,9 @@ public class upload implements uploadRemote, uploadLocal {
 		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
 		s3.createBucket(name);
 
+	}
+	public void deleteFile(String bucket , String file)
+	{
+		s3.deleteObject(bucket,file);
 	}
 }
