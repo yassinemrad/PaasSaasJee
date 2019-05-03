@@ -23,10 +23,16 @@
 					<tr>
 						<td><h:outputText value="${rec.get('objet')}" /></td>
 
-						<td><h:outputText value="${rec.get('description')}" /></td>
-						<td><h:outputText value="${rec.get('date')}" /></td>
-						<td><h:outputText value="${rec.get('user')}" /></td>
-					</tr>
+<td>
+<h:outputText value="${rec.get('description')}" />
+</td>
+<td>
+<h:outputText value="${rec.get('date')}" />
+</td>
+<td>
+<h:outputText value="#{reclamation.getUSerById(rec.get('user')).get('FirstName')}" />
+</td>
+</tr>
 
 				</c:forEach>
 			</table>

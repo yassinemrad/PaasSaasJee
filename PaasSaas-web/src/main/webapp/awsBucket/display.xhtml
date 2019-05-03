@@ -1,37 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	template="/template/template.xhtml">
-	<ui:param name="page_name" value="Accueil" />
-	<ui:define name="content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+<h:body>
 
-		<h:form>
-			<h:commandButton action="#{awsbucket.redirectAddBacket()}"
-				value="Create Backet" />
+<h:panelGroup>
+<h:form>
+<h:commandButton action="#{awsbucket.redirectAddBacket()}" value="Create Backet" />
 
-			<br></br>
-			<h:outputText
-				value="You have  #{awsbucket.getliste().size()} Backet storage" />
-			<br></br>
-			<table border="1">
-
-				<c:forEach items="#{awsbucket.getliste()}" var="bac">
-
-
-
-					<h:commandLink
-						action="#{awsbucket.redirectlistFile(bac.get('name'))}"
-						value="${bac.get('name')}" href="AddFile">
-					</h:commandLink>
-				</c:forEach>
-			</table>
+<h:outputScript library="javax.faces" name="jsf.js" />
+<br></br>
+<h:outputText value="You have  #{awsbucket.getliste().size()} Backet storage" /> 
+<br></br>
+<h:selectOneMenu value="#{awsbucket.backet}" 
+     >
+<f:selectItem itemLabel="Select your Backet" itemValue="#{awsbucket.backet}"/>
+<c:forEach items="#{awsbucket.getliste()}" var="bac">
+<f:selectItem itemLabel="${bac.get('name')}" itemValue="${bac.get('name')}" /> 
 
 
+</c:forEach>
+   <f:ajax event="change" update="#{awsbucket.backet}" />
+</h:selectOneMenu>
+<h:commandButton action="#{awsbucket.getFile(awsbucket.backet)}" value="Show files" />
 
-		</h:form>
+<div>
 
-	</ui:define>
-</ui:composition>
+<c:forEach items="#{awsbucket.listeFile}" var="bacc">
+<br></br>
+<h:outputText value="#{bacc}" />
+
+</c:forEach>
+</div>
+
+</h:form>
+</h:panelGroup>
+</h:body>
+
+</html>

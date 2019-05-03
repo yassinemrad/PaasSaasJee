@@ -23,8 +23,14 @@
 					<tr>
 						<td><h:outputText value="${rec.get('objet')}" /></td>
 
-						<td><h:outputText value="${rec.get('etat')}" /></td>
-						<td><c:if test="#{ rec.get('etat') == 0}">
+<td>
+<h:outputText value="${rec.get('description')}" />
+</td>
+ <td>
+<c:if test="#{ rec.get('etat') == 0}">
+  
+<h:commandButton action="#{reclamation.delete(rec.get('id'))}"
+value="Delete" />
 
 								<h:commandButton action="#{reclamation.delete(rec.get('id'))}"
 									value="Delete" />
