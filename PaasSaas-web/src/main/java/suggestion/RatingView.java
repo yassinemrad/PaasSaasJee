@@ -38,7 +38,15 @@ public class RatingView {
         return rating1;
     }
  
-    public void setRating1(Integer rating1) {
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setRating1(Integer rating1) {
         this.rating1 = rating1;
     }
  
