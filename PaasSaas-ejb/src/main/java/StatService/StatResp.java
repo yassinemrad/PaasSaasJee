@@ -61,4 +61,9 @@ public String getAllp(){
 	String lr = c.target("http://localhost:13515/api/Statapi/listp").request().get().readEntity(String.class);
 	return lr;
 }
+
+public String getprojbyid(int id){
+	String lr = c.target("http://localhost:13515/api/Statapi/listpid?id="+id).request().get().readEntity(String.class);
+	return lr;
+}
 }

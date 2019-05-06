@@ -1,9 +1,14 @@
 package suggestion;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -30,6 +35,16 @@ public class suggestion {
 	private String auteur ;
 	private int priorite;
 	private int id;
+	private int idproject = 5;
+	private int i;
+	public int getIdproject() {
+		return idproject;
+	}
+
+	public void setIdproject(int idproject) {
+		this.idproject = idproject;
+	}
+
 	public SugestrespRemote getSug() {
 		return sug;
 	}
@@ -150,19 +165,30 @@ public void setAuteur(String auteur) {
 
 @GET
 @javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-public ArrayList<Object> TaskesById(){
+public ArrayList<Object> TaskesById() throws ParseException{
 	
-	String lr= stat.getAlls(5);		       
+	String lr= stat.getAlls(idproject);		 
     JSONArray array = new JSONArray(lr);
     ArrayList<Object> listdata = new ArrayList<Object>();     
-    
+
     if (array != null) { 
        for (int i=0;i<array.length();i++){ 
+    	   JSONObject jsob = new JSONObject(array.get(i).toString());
+   	    System.out.println("this is JSOB : "+jsob);
+
+    	   String dt1 =jsob.get("startDate").toString();
+    	    dt1 = dt1.substring(0, 10);
+    		SimpleDateFormat dtf1 = new SimpleDateFormat("yyyyy-mm-dd"); 
+    		Date date = dtf1.parse(dt1);
+    		SimpleDateFormat dtf2 = new SimpleDateFormat("dd-mm-yyyy");
+    	    
+    	    jsob.put("startDate", dtf2.format(date));
         listdata.add(array.get(i));
-        System.out.println(array.get(i));
+        
        } 
     }
-  
+	System.out.println("this  is list of task: "+listdata);
+
    // 	System.out.println(array);
     	//System.out.println(obj.getInt("id"));
     return listdata;
@@ -189,12 +215,48 @@ public ArrayList<Object> proj(){
 	
 }
 
+@GET
+
+@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+public JSONObject projById() throws ParseException{
+	String lr= stat.getprojbyid(idproject);    
+	//JSONArray  array = new JSONArray(lr);
+	//ArrayList<Object> al=new ArrayList<Object>();
+	JSONObject js=new JSONObject(lr);
+	String dt1 =js.get("startDate").toString();
+    dt1 = dt1.substring(0, 10);
+	SimpleDateFormat dtf1 = new SimpleDateFormat("yyyyy-mm-dd"); 
+	Date date = dtf1.parse(dt1);
+	SimpleDateFormat dtf2 = new SimpleDateFormat("dd-mm-yyyy");
+    
+    System.out.println(dt1);
+    js.put("startDate", dtf2.format(date));
+    System.out.println(js);
+    
+	return js;
+}
+  
+   // 	System.out.println(array);
+    	//System.out.println(obj.getInt("id"));
+ 
+	
+
+
+
 public StatRespRemote getStat() {
 	return stat;
 }
 
 public void setStat(StatRespRemote stat) {
 	this.stat = stat;
+}
+
+public int getI() {
+	return i;
+}
+
+public void setI(int i) {
+	this.i = i;
 }
 
 }
