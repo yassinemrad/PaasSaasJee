@@ -10,14 +10,17 @@
 <div class="form-horizontal">
 	
 			  <table class="table table-striped table-advance table-hover" align="center">
-				<h:commandButton action="#{reclamation.redirectCreate()}"
-					value="Create" />
+				
 				<br></br>
 				<tr>
-					<td>Object</td>
-					<td>Description</td>
+				<th>
+				 <i class="fa fa-bookmark"></i>
+					Object</th>
+					 <th class="hidden-phone">
+                        <i class="fa fa-question-circle"></i>
+					Description</th>
 
-					<td>Delete</td>
+				
 				</tr>
 				<c:forEach items="#{reclamation.getByUser()}" var="rec">
 					<tr>
@@ -43,7 +46,10 @@
 
 				</c:forEach>
 			</table>
-
+<h:commandButton   class="btn btn-success" action="#{reclamation.redirectCreate()}"
+					value="Create" >
+					  <h:i class="glyphicon glyphicon-plus"></h:i>
+					   </h:commandButton>
 </div>
 
 		
