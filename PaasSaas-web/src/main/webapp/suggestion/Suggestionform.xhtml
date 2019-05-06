@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/_MyTemplatepage.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+<h:head>
+					<link href="Template/lib/bootstrap/css/bootstrap.min.css"
+						rel="stylesheet" />
+					<script type="text/javascript"
+						src="https://code.jquery.com/jquery-3.1.1.min.js" />
+					<script src="Template/lib/jquery/jquery.min.js"></script>
+					<script src="Template/lib/bootstrap/js/bootstrap.min.js"></script>
+					<link href="/Content/font-awesome.css" rel="stylesheet"
+						type="text/css" />
+					<link href="/Content/font-awesome.min.css" rel="stylesheet"
+						type="text/css" />
+
+				</h:head>
+	<ui:define name="test">
+		<h:panelGroup>
+<!-- 			<h:form> -->
+<!-- 			<br/> -->
+<!-- 			<table> -->
+<!-- 			<br/> -->
+<!-- 				<tr> -->
+			
+<!-- 			<td>	 -->
+<!-- 			<h:outputText value="titre" /></td> -->
+			
+<!-- 				<td> -->
+				
+<!-- 				<h:inputText id="c" value="#{suggestion.titre}" required="true" requiredMessage="remplir le champ titre"> -->
+<!-- 				</h:inputText> <h:message for="c" style="color:green"/> -->
+<!-- 			<f:validateDoubleRange minimum="1" maximum="4" for="c"/> --> 
+<!-- 				</td></tr> -->
+<!-- 			<tr> -->
+<!-- 			<td> </td>   -->
+<!-- 			<td>  -->
+<!-- 			</td> -->
+<!-- 			</tr> -->
+<!-- 				<tr> -->
+<!-- 			<td>	<h:outputText value="description" /></td> -->
+<!-- 			<td>	<h:inputText id="desc" value="#{suggestion.description}" required="true" requiredMessage="remplir le champ descritption"> -->
+<!-- 				</h:inputText> <h:message for="desc" style="color:green"/></td> -->
+<!-- 			</tr> -->
+<!-- 			<tr>	 -->
+<!-- 			<td><h:outputText value="auteur" /></td> -->
+<!-- 				<td><h:inputText id="aut" value="#{suggestion.auteur}" required="true" requiredMessage="remplir le champ auteur"> -->
+<!-- 				</h:inputText><h:message for="aut" style="color:green"/></td> -->
+<!-- 				</tr> -->
+<!-- 			<tr><td>	<h:outputText value="type"></h:outputText></td> -->
+<!-- 			<td>	<h:selectOneMenu value="#{suggestion.priorite}"> -->
+<!-- 					<f:selectItem itemLabel="System Failure" itemValue="0" /> -->
+<!-- 					<f:selectItem itemLabel="Feedback" itemValue="1" /> -->
+<!-- 					<f:selectItem itemLabel="Improvements" itemValue="2" /> -->
+<!-- 				</h:selectOneMenu> -->
+<!-- 				</td></tr> -->
+<!-- 				<tr><td><h:commandButton value="rec" action="#{suggestion.add()}" /> </td> -->
+<!-- 				</tr> -->
+<!-- 				</table> -->
+
+
+<!-- 			</h:form> -->
+			
+ <div class="row">
+ <h3 style="margin-top:40">Ajout suggestion</h3>
+<!-- <div class="ui-g ui-fluid"> -->
+<!--     <div class="ui-g-12 ui-md-4"> -->
+<!--         <div class="ui-inputgroup"> -->
+<!--             <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span> -->
+<!--             <p:inputText placeholder="Username" />       -->
+<!--         </div> -->
+<!--     </div> -->
+<!--  </div> -->
+ 
+            <div class="ui-g ui-fluid">
+                <h:form id="studentForm" styleClass="form-horizontal" horizontal="true">
+                    <div class="ui-g-12 ui-md-4">
+                       
+                        <h:outputLabel class="ui-inputgroup" />
+                        <div class="ui-inputgroup-titre">
+                            <p:inputText id="c" value="#{suggestion.titre}" placeholder="titre de suggestion"  required="true" requiredMessage="remplir le champ titre" styleClass="form-control" />
+                       <h:message for="c" style="color:green"/>
+                        </div>
+                    </div>
+                    <div  class="ui-g-12 ui-md-4">
+                        <h:outputLabel  class="ui-inputgroup" />
+                        <div class="ui-inputgroup-titre">
+                            <p:inputText id="desc" value="#{suggestion.description}"   placeholder="description de suggestion"  styleClass="form-control" required="true" requiredMessage="remplir le champ descritption" />
+                       <h:message for="desc" style="color:green"/>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <h:outputLabel  class="ui-inputgroup"  styleClass="control-label col-sm-2" />
+                        <div class="ui-inputgroup-titre">
+                            <p:inputText id="aut" value="#{suggestion.auteur}" placeholder="l'utilisateur de la suggestion" styleClass="form-control" required="true" requiredMessage="remplir le champ username" />
+                       <h:message for="aut" style="color:green"/>
+                        </div>
+                    </div>
+                      <div class="ui-g-12 ui-md-6" >
+                
+                    <h:outputText  styleClass="control-label col-sm-12"></h:outputText>
+					<h:selectOneMenu value="#{suggestion.priorite}" class="col-sm-12"  >
+					<f:selectItem itemLabel="System Failure" itemValue="0" styleClass="form-control"  />
+					<f:selectItem itemLabel="Feedback" itemValue="1" styleClass="form-control"  />
+					<f:selectItem itemLabel="Improvements" itemValue="2" styleClass="form-control" />
+				</h:selectOneMenu></div>
+                    <div class="ui-g-12 ui-md-8">
+                        <div class="col-sm-offset-2 col-sm-12">
+                        <h:outputLabel class="ui-inputgroup"  styleClass="control-label col-sm-12"  />
+                        <div class="ui-inputgroup-titre" ><br/>
+                            <h:commandButton value="Create" action="#{suggestion.add()}" styleClass="btn btn-primary btn-lg btn-block" style="float:right;margin-top:80px;margin-right:180px"/></div>
+                        </div>
+                    </div>
+              
+                </h:form>
+                </div></div>
+		</h:panelGroup>
+		
+	</ui:define>
+</ui:composition>
