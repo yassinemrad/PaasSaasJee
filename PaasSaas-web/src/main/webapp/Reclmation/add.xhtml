@@ -6,25 +6,32 @@
 	template="/_MyTemplatepage.xhtml">
 	<h:head></h:head>
 	<ui:define name="test">
-
-		<h:form>
-			<table>
-				<tr>
-					<td><h:outputText value="Object" /></td>
-					<td><h:inputText value="#{reclamation.object}" /></td>
-				</tr>
-				<tr>
-					<td><h:outputText value="Description" /></td>
-					<td><h:inputText value="#{reclamation.description}" /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><h:commandButton value="Add" action="#{reclamation.add()}" />
-						<h:commandButton value="Cancel"
-							action="#{reclamation.redirectMyRec()}" /></td>
-				</tr>
-			</table>
-		</h:form>
-
+<h3><i class="fa fa-angle-right"></i> Create Reclamation</h3>
+<hr></hr>
+<h:form >
+   <div class="col-lg-12 main-chart">
+	<div class="form-horizontal">
+			<div class="form-group">
+		<h3>	<h:outputText value="Object" class = "text-danger"/></h3>
+		<div class="col-md-10" >
+					<h:inputText class = "form-control" value="#{reclamation.object}" cols="60" rows="5" />
+				</div>
+				</div>
+				<div class="form-group">
+				<h3>	<h:outputText value="Description" class = "text-danger"/></h3>
+				<div class="col-md-10">
+					<h:inputTextarea value="#{reclamation.description}" class = "form-control"/>
+				
+					</div>
+					</div>
+					</div>
+					<div class="form-send">
+					<h:commandButton class="btn btn-theme" value="Add" action="#{reclamation.add()}" />
+						<h:commandButton class="btn btn-theme04" value="Cancel"
+							action="#{reclamation.redirectMyRec()}" />
+				</div>
+		</div>	
+		
+</h:form>
 	</ui:define>
 </ui:composition>

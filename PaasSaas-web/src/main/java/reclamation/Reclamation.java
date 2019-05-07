@@ -79,7 +79,7 @@ public class Reclamation {
 	}
 	@POST
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-	public void add()
+	public String add()
 	{
 		 String jsonString = new JSONObject()
                  .put("objet", object)
@@ -87,6 +87,8 @@ public class Reclamation {
                  .put("user", 6).toString();
 		rec.Add(jsonString);
 		 //rec.getByUser();
+		String navigateTo = "myReclamations?faces-redirect=true";
+		return navigateTo;
 	}
 	@PUT
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
@@ -149,6 +151,7 @@ public class Reclamation {
 	}
 	public String redirectCreate()
 	{
+		System.out.println("hany nod5ol");
 		String navigateTo = "add?faces-redirect=true";
 		return navigateTo;
 	}
