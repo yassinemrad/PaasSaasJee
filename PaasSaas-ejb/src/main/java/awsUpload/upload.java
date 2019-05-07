@@ -39,7 +39,7 @@ public class upload implements uploadRemote, uploadLocal {
 
 
     static javax.ws.rs.client.Client c= ClientBuilder.newClient();
-	AWSCredentials Creadendials =new BasicAWSCredentials("AKIAIXT2WGXMUQFQ5V2Q","VWGkEbZlZbmKG1sctYQT9bgqD1t5bL+OXYAQ8L/N	");
+	AWSCredentials Creadendials =new BasicAWSCredentials("","");
 	final AmazonS3 s3=AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Creadendials)).withRegion(Regions.EU_WEST_1).build();
 	
 	public void uploadfile(String bac , File f , String nom)
@@ -70,7 +70,7 @@ public class upload implements uploadRemote, uploadLocal {
 	}
 	public String getByUser(){
 		
-		String lr = c.target("http://localhost:13515/api/ApiBuckets/GetByU?id="+6).request().get().readEntity(String.class);
+		String lr = c.target("arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiBuckets/GetByU?id="+6).request().get().readEntity(String.class);
 		return lr;
 	}
 	public List<String> listBackets()
@@ -87,7 +87,7 @@ public class upload implements uploadRemote, uploadLocal {
 	public void createBucket(String name,String s)
 	{
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:13515/api/ApiBuckets/Create");
+		WebTarget target = client.target("arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiBuckets/Create");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
 		s3.createBucket(name);

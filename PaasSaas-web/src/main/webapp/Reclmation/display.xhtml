@@ -7,20 +7,24 @@
 	template="/_MyTemplatepage.xhtml">
 		<h:head></h:head>
 	<ui:define name="test">
-
+<h2><i class="fa fa-angle-right"></i>     New Reclamations</h2>
 		<h:form>
-			<h:commandButton action="#{reclamation.redirectOld()}"
-				value="Old Reclamations" />
+			
 			<br></br>
-			<h:outputText
-				value="You have  #{reclamation.getNT().size()} reclamations no treat" />
-			<table border="1">
+			<h4><h:outputText
+		 class = "text-danger"	value="You have  #{reclamation.getNT().size()} reclamations no treat" /></h4>
+			<table class="table table-striped table-advance table-hover" align="center">
 				<tr>
-					<td>Object</td>
-					<td>Description</td>
-					<td>Date</td>
-					<td>User</td>
-					<td>Treat</td>
+					<th>
+            <i class="fa fa-bookmark"></i>Object</th>
+					<th class="hidden-phone">
+            <i class="fa fa-question-circle"></i>Description</th>
+					 <th>
+            <i class="fa fa-calendar" /> Date</th>
+					 <th>
+            <i class="fa fa-bullhorn"></i>User</th>
+					<th>
+            <i class=" fa fa-edit"></i>Treat</th>
 				</tr>
 				<c:forEach items="#{reclamation.getNT()}" var="rec">
 					<tr>
@@ -38,7 +42,8 @@
 				</c:forEach>
 			</table>
 
-
+<h:commandButton action="#{reclamation.redirectOld()}" class="btn btn-theme"
+				value="Old Reclamations" />
 
 		</h:form>
 

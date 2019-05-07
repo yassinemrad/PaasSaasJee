@@ -1,12 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:c="http://java.sun.com/jsp/jstl/core"
+template="/_MyTemplatepage.xhtml"
 >
-<h:body>
 
+<ui:define name="test">
+<h3><i class="fa fa-angle-right"></i> AWS S3 Storage</h3>
+<hr></hr>
 <h:panelGroup>
 <h:form enctype="multipart/form-data">
 <h:commandButton action="#{awsbucket.redirectAddBacket()}" value="Create Backet" />
@@ -51,6 +54,6 @@ xmlns:c="http://java.sun.com/jsp/jstl/core"
 
 </h:panelGroup>
 
-</h:body>
 
-</html>
+</ui:define>
+</ui:composition>
