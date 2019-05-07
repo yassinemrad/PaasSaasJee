@@ -65,8 +65,8 @@
 
 <!-- 			</h:form> -->
 			
- <div class="row">
- <h3 style="margin-top:40">Ajout suggestion</h3>
+<!--  <div class="row"> -->
+<!--  <h3 style="margin-top:40">Ajout suggestion</h3> -->
 <!-- <div class="ui-g ui-fluid"> -->
 <!--     <div class="ui-g-12 ui-md-4"> -->
 <!--         <div class="ui-inputgroup"> -->
@@ -76,48 +76,111 @@
 <!--     </div> -->
 <!--  </div> -->
  
-            <div class="ui-g ui-fluid">
-                <h:form id="studentForm" styleClass="form-horizontal" horizontal="true">
-                    <div class="ui-g-12 ui-md-4">
+<!--             <div class="ui-g ui-fluid"> -->
+<!--                 <h:form id="studentForm" styleClass="form-horizontal" horizontal="true"> -->
+<!--                     <div class="ui-g-12 ui-md-4"> -->
                        
-                        <h:outputLabel class="ui-inputgroup" />
-                        <div class="ui-inputgroup-titre">
-                            <p:inputText id="c" value="#{suggestion.titre}" placeholder="titre de suggestion"  required="true" requiredMessage="remplir le champ titre" styleClass="form-control" />
-                       <h:message for="c" style="color:green"/>
-                        </div>
-                    </div>
-                    <div  class="ui-g-12 ui-md-4">
-                        <h:outputLabel  class="ui-inputgroup" />
-                        <div class="ui-inputgroup-titre">
-                            <p:inputText id="desc" value="#{suggestion.description}"   placeholder="description de suggestion"  styleClass="form-control" required="true" requiredMessage="remplir le champ descritption" />
-                       <h:message for="desc" style="color:green"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12 ui-md-4">
-                        <h:outputLabel  class="ui-inputgroup"  styleClass="control-label col-sm-2" />
-                        <div class="ui-inputgroup-titre">
-                            <p:inputText id="aut" value="#{suggestion.auteur}" placeholder="l'utilisateur de la suggestion" styleClass="form-control" required="true" requiredMessage="remplir le champ username" />
-                       <h:message for="aut" style="color:green"/>
-                        </div>
-                    </div>
-                      <div class="ui-g-12 ui-md-6" >
+<!--                         <h:outputLabel class="ui-inputgroup" /> -->
+<!--                         <div class="ui-inputgroup-titre"> -->
+<!--                             <p:inputText id="c" value="#{suggestion.titre}" placeholder="titre de suggestion"  required="true" requiredMessage="remplir le champ titre" styleClass="form-control" /> -->
+<!--                        <h:message for="c" style="color:green"/> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                     <div  class="ui-g-12 ui-md-4"> -->
+<!--                         <h:outputLabel  class="ui-inputgroup" /> -->
+<!--                         <div class="ui-inputgroup-titre"> -->
+<!--                             <p:inputText id="desc" value="#{suggestion.description}"   placeholder="description de suggestion"  styleClass="form-control" required="true" requiredMessage="remplir le champ descritption" /> -->
+<!--                        <h:message for="desc" style="color:green"/> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                     <div class="ui-g-12 ui-md-4"> -->
+<!--                         <h:outputLabel  class="ui-inputgroup"  styleClass="control-label col-sm-2" /> -->
+<!--                         <div class="ui-inputgroup-titre"> -->
+<!--                             <p:inputText id="aut" value="#{suggestion.auteur}" placeholder="l'utilisateur de la suggestion" styleClass="form-control" required="true" requiredMessage="remplir le champ username" /> -->
+<!--                        <h:message for="aut" style="color:green"/> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                       <div class="ui-g-12 ui-md-6" > -->
                 
-                    <h:outputText  styleClass="control-label col-sm-12"></h:outputText>
-					<h:selectOneMenu value="#{suggestion.priorite}" class="col-sm-12"  >
+<!--                     <h:outputText  styleClass="control-label col-sm-12"></h:outputText> -->
+<!-- 					<h:selectOneMenu value="#{suggestion.priorite}" class="col-sm-12"  > -->
+<!-- 					<f:selectItem itemLabel="System Failure" itemValue="0" styleClass="form-control"  /> -->
+<!-- 					<f:selectItem itemLabel="Feedback" itemValue="1" styleClass="form-control"  /> -->
+<!-- 					<f:selectItem itemLabel="Improvements" itemValue="2" styleClass="form-control" /> -->
+<!-- 				</h:selectOneMenu></div> -->
+<!--                     <div class="ui-g-12 ui-md-8"> -->
+<!--                         <div class="col-sm-offset-2 col-sm-12"> -->
+<!--                         <h:outputLabel class="ui-inputgroup"  styleClass="control-label col-sm-12"  /> -->
+<!--                         <div class="ui-inputgroup-titre" ><br/> -->
+<!--                             <h:commandButton value="Create" action="#{suggestion.add()}" styleClass="btn btn-primary btn-lg btn-block" style="float:right;margin-top:80px;margin-right:180px"/></div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+              
+<!--                 </h:form> -->
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <div class="form-panel">
+              <h4 class="mb"><i class="fa fa-angle-right"></i> Ajout suggestion</h4>
+              <h:form class="form-horizontal style-form" method="get">
+                <div class="form-group">
+                  <h:outputLabel  class="col-sm-2 col-sm-2 control-label">Titre</h:outputLabel>
+                  <div class="col-sm-10">
+                    <p:inputText id="c" type="text" value="#{suggestion.titre}" placeholder="titre de suggestion"   required="true" requiredMessage="remplir le champ titre" class="form-control" />
+                 <h:message for="c" style="color:green"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                 <h:outputLabel class="col-sm-2 col-sm-2 control-label">Description</h:outputLabel>
+                <h:inputTextarea id="desc" value="#{suggestion.description}" class="form-control" name="description"  placeholder="description de suggestion" style="width:820px;margin-left:188px" rows="5" data-rule="required"  required="true" requiredMessage="remplir le champ description" ></h:inputTextarea>
+                <h:message for="desc" style="color:green"/>
+                <div class="validate"></div>
+              </div>
+             
+              <div class="form-group">
+                  <h:outputLabel class="col-sm-2 col-sm-2 control-label">nom d'utilisateur</h:outputLabel>
+                  <div class="col-sm-10">
+                    <p:inputText id="us" type="text" value="#{suggestion.auteur}" placeholder="l'utilisateur de la suggestion"   required="true" requiredMessage="remplir le champ username" class="form-control" />
+                  <h:message for="us" style="color:green"/>
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <h:outputLabel value="Type de suggestion" class="col-sm-2 col-sm-2 control-label"  />
+<!--                <div class="ui-g-12 ui-md-6" style="width: 83%; margin-left:170px" > -->
+                 <div class="col-sm-10">
+<!--                     <h:outputLabel  styleClass="control-label col-sm-12" style="text-align:left"> </h:outputLabel> -->
+					<h:selectOneMenu value="#{suggestion.priorite}" styleClass="form-control">
 					<f:selectItem itemLabel="System Failure" itemValue="0" styleClass="form-control"  />
 					<f:selectItem itemLabel="Feedback" itemValue="1" styleClass="form-control"  />
 					<f:selectItem itemLabel="Improvements" itemValue="2" styleClass="form-control" />
-				</h:selectOneMenu></div>
-                    <div class="ui-g-12 ui-md-8">
+				</h:selectOneMenu></div></div>
+               
+               
+<!--                 <select value="#{suggestion.priorite}" class="form-control"> -->
+<!--                   <option label="System Failure" value="0"></option> -->
+<!--                   <option label="Feedback" value="1"></option> -->
+<!--                   <option label="Improvements" value="2"></option> -->
+                  
+<!--                 </select> -->
+                <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-12">
                         <h:outputLabel class="ui-inputgroup"  styleClass="control-label col-sm-12"  />
-                        <div class="ui-inputgroup-titre" ><br/>
-                            <h:commandButton value="Create" action="#{suggestion.add()}" styleClass="btn btn-primary btn-lg btn-block" style="float:right;margin-top:80px;margin-right:180px"/></div>
-                        </div>
+                        
+                            <h:commandButton value="Create" action="#{suggestion.add()}" styleClass="btn btn-primary btn-lg btn-block" style="float:right;margin-top:20px;margin-right:170px"/></div>
+                       
                     </div>
               
-                </h:form>
-                </div></div>
+              </h:form>
+            </div>
+         
 		</h:panelGroup>
 		
 	</ui:define>

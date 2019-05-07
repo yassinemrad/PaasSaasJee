@@ -66,197 +66,208 @@ public class suggestion {
 	@EJB
 	private StatRespRemote stat;
 
-	
+
 	Sugestresp j;
-	
+
 	@POST
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-	public void add()
+	public String add()
 	{
-		 String jsonString = new JSONObject()
-                 .put("titre", titre)
-                 .put("description", description)
-                 .put("auteur", auteur)
-                 .put("priorite", priorite)
-                 .toString();
-		sug.Add(jsonString);
-		System.out.println(jsonString);
-		 //rec.getByUser();
+		if((titre == null)||(description ==null)||(auteur== null))
+		{
+			return "Suggestionform?faces-redirect=true";
+			}else{
+			String jsonString = new JSONObject()
+
+					.put("titre", titre)
+					.put("description", description)
+					.put("auteur", auteur)
+					.put("priorite", priorite)
+					.toString();
+			sug.Add(jsonString);
+			System.out.println(jsonString);
+			return "Panelsugst?faces-redirect=true";
+		}	 //rec.getByUser();
+
+
+
+
 	}
 
-@GET
-	
+
+	@GET
+
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Object> getAll(){
-		
+
 		String lr= sug.getAll();		       
-        JSONArray array = new JSONArray(lr);
-        ArrayList<Object> listdata = new ArrayList<Object>();     
-        
-        if (array != null) { 
-           for (int i=0;i<array.length();i++){ 
-            listdata.add(array.get(i));
-        //    System.out.println(array.get(i));
-           } 
-        }
-      
-       // 	System.out.println(array);
-        	//System.out.println(obj.getInt("id"));
-        return listdata;
-		
+		JSONArray array = new JSONArray(lr);
+		ArrayList<Object> listdata = new ArrayList<Object>();     
+
+		if (array != null) { 
+			for (int i=0;i<array.length();i++){ 
+				listdata.add(array.get(i));
+				//    System.out.println(array.get(i));
+			} 
+		}
+
+		// 	System.out.println(array);
+		//System.out.println(obj.getInt("id"));
+		return listdata;
+
 	}
-@PUT
-@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-public void update()
-{
+	@PUT
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public void update()
+	{
 
-	 String jsonString = new JSONObject()
-            .put("titre", titre)
-            .put("description", description).put("auteur", auteur)
-            .put("priorite", priorite).put("Idsug",id)
-            .toString();
-	sug.Update(jsonString);
-}
+		String jsonString = new JSONObject()
+				.put("titre", titre)
+				.put("description", description).put("auteur", auteur)
+				.put("priorite", priorite).put("Idsug",id)
+				.toString();
+		sug.Update(jsonString);
+	}
 
-@PUT
-@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-public String Vote(int idSug)
-{
-	 System.out.println("Vote try");
+	@PUT
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public String Vote(int idSug)
+	{
+		System.out.println("Vote try");
 
-	 String jsonString = new JSONObject()
-            .put("Idsug",(int) idSug)
-            .toString();
-	sug.Votes(jsonString);
-	return "Panelsugst?faces-redirect=true";
-}
+		String jsonString = new JSONObject()
+				.put("Idsug",(int) idSug)
+				.toString();
+		sug.Votes(jsonString);
+		return "Panelsugst?faces-redirect=true";
+	}
 
-public int getId() {
-	return id;
-}
+	public int getId() {
+		return id;
+	}
 
-public void setId(int id) {
-	this.id = id;
-}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public String getTitre() {
-	return titre;
-}
+	public String getTitre() {
+		return titre;
+	}
 
-public void setTitre(String titre) {
-	this.titre = titre;
-}
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
 
-public String getDescription() {
-	return description;
-}
+	public String getDescription() {
+		return description;
+	}
 
-public void setDescription(String description) {
-	this.description = description;
-}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-public String getAuteur() {
-	return auteur;
-}
+	public String getAuteur() {
+		return auteur;
+	}
 
-public void setAuteur(String auteur) {
-	this.auteur = auteur;
-}
+	public void setAuteur(String auteur) {
+		this.auteur = auteur;
+	}
 
-@GET
-@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-public ArrayList<Object> TaskesById() throws ParseException{
-	
-	String lr= stat.getAlls(idproject);		 
-    JSONArray array = new JSONArray(lr);
-    ArrayList<Object> listdata = new ArrayList<Object>();     
+	@GET
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Object> TaskesById() throws ParseException{
 
-    if (array != null) { 
-       for (int i=0;i<array.length();i++){ 
-    	   JSONObject jsob = new JSONObject(array.get(i).toString());
-   	    System.out.println("this is JSOB : "+jsob);
+		String lr= stat.getAlls(idproject);		 
+		JSONArray array = new JSONArray(lr);
+		ArrayList<Object> listdata = new ArrayList<Object>();     
 
-    	   String dt1 =jsob.get("startDate").toString();
-    	    dt1 = dt1.substring(0, 10);
-    		SimpleDateFormat dtf1 = new SimpleDateFormat("yyyyy-mm-dd"); 
-    		Date date = dtf1.parse(dt1);
-    		SimpleDateFormat dtf2 = new SimpleDateFormat("dd-mm-yyyy");
-    	    
-    	    jsob.put("startDate", dtf2.format(date));
-        listdata.add(array.get(i));
-        
-       } 
-    }
-	System.out.println("this  is list of task: "+listdata);
+		if (array != null) { 
+			for (int i=0;i<array.length();i++){ 
+				JSONObject jsob = new JSONObject(array.get(i).toString());
+				System.out.println("this is JSOB : "+jsob);
 
-   // 	System.out.println(array);
-    	//System.out.println(obj.getInt("id"));
-    return listdata;
-	
-}
-@GET
-@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-public ArrayList<Object> proj(){
-	
-	String lr= stat.getAllp();		       
-    JSONArray array = new JSONArray(lr);
-    ArrayList<Object> listdata = new ArrayList<Object>();     
-    
-    if (array != null) { 
-       for (int i=0;i<array.length();i++){ 
-        listdata.add(array.get(i));
-        System.out.println(array.get(i));
-       } 
-    }
-  
-   // 	System.out.println(array);
-    	//System.out.println(obj.getInt("id"));
-    return listdata;
-	
-}
+				String dt1 =jsob.get("startDate").toString();
+				dt1 = dt1.substring(0, 10);
+				SimpleDateFormat dtf1 = new SimpleDateFormat("yyyyy-mm-dd"); 
+				Date date = dtf1.parse(dt1);
+				SimpleDateFormat dtf2 = new SimpleDateFormat("dd-mm-yyyy");
 
-@GET
+				jsob.put("startDate", dtf2.format(date));
+				listdata.add(array.get(i));
 
-@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-public JSONObject projById() throws ParseException{
-	String lr= stat.getprojbyid(idproject);    
-	//JSONArray  array = new JSONArray(lr);
-	//ArrayList<Object> al=new ArrayList<Object>();
-	JSONObject js=new JSONObject(lr);
-	String dt1 =js.get("startDate").toString();
-    dt1 = dt1.substring(0, 10);
-	SimpleDateFormat dtf1 = new SimpleDateFormat("yyyyy-mm-dd"); 
-	Date date = dtf1.parse(dt1);
-	SimpleDateFormat dtf2 = new SimpleDateFormat("dd-mm-yyyy");
-    
-    System.out.println(dt1);
-    js.put("startDate", dtf2.format(date));
-    System.out.println(js);
-    
-	return js;
-}
-  
-   // 	System.out.println(array);
-    	//System.out.println(obj.getInt("id"));
- 
-	
+			} 
+		}
+		System.out.println("this  is list of task: "+listdata);
+
+		// 	System.out.println(array);
+		//System.out.println(obj.getInt("id"));
+		return listdata;
+
+	}
+	@GET
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Object> proj(){
+
+		String lr= stat.getAllp();		       
+		JSONArray array = new JSONArray(lr);
+		ArrayList<Object> listdata = new ArrayList<Object>();     
+
+		if (array != null) { 
+			for (int i=0;i<array.length();i++){ 
+				listdata.add(array.get(i));
+				System.out.println(array.get(i));
+			} 
+		}
+
+		// 	System.out.println(array);
+		//System.out.println(obj.getInt("id"));
+		return listdata;
+
+	}
+
+	@GET
+
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public JSONObject projById() throws ParseException{
+		String lr= stat.getprojbyid(idproject);    
+		//JSONArray  array = new JSONArray(lr);
+		//ArrayList<Object> al=new ArrayList<Object>();
+		JSONObject js=new JSONObject(lr);
+		String dt1 =js.get("startDate").toString();
+		dt1 = dt1.substring(0, 10);
+		SimpleDateFormat dtf1 = new SimpleDateFormat("yyyyy-mm-dd"); 
+		Date date = dtf1.parse(dt1);
+		SimpleDateFormat dtf2 = new SimpleDateFormat("dd-mm-yyyy");
+
+		System.out.println(dt1);
+		js.put("startDate", dtf2.format(date));
+		System.out.println(js);
+
+		return js;
+	}
+
+	// 	System.out.println(array);
+	//System.out.println(obj.getInt("id"));
 
 
 
-public StatRespRemote getStat() {
-	return stat;
-}
 
-public void setStat(StatRespRemote stat) {
-	this.stat = stat;
-}
 
-public int getI() {
-	return i;
-}
+	public StatRespRemote getStat() {
+		return stat;
+	}
 
-public void setI(int i) {
-	this.i = i;
-}
+	public void setStat(StatRespRemote stat) {
+		this.stat = stat;
+	}
+
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
+		this.i = i;
+	}
 
 }

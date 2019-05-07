@@ -24,15 +24,7 @@
 					src="../Scripts/dhtmlxcommon.js"></script>
 				<script type="text/javascript" language="JavaScript"
 					src="../Scripts/dhtmlxgantt.js"></script>
-					<h:form>
-<h:selectOneMenu id="projectSelect" value="#{suggestion.idproject}">
-<c:forEach items="#{suggestion.proj()}" var="item">
-<f:selectItem itemLabel="${item.get('name')}" itemValue="${item.get('id')}" />
-							</c:forEach>
 					
-				</h:selectOneMenu>
-				<h:commandButton onclick="createChartControl()" value="Submit"/>
-				</h:form>
 				<script language="JavaScript" type="text/javascript">
     /*<![CDATA[*/
    window.onload = function createChartControl() {
@@ -56,15 +48,36 @@
         ganttChartControl.addProject(project1);
         //ganttChartControl.addProject(project2);
 
-        ganttChartControl.create("GanttDiv");
+        ganttChartControl.create("pie");
     }
     /*]]>*/
 </script>
-<div style="width: 1200px; height: 620px; position: relative;"
-				id="GanttDiv">
-				<script type='text/javascript'></script>
-			</div>
+<!-- <div style="width: 1200px; height: 620px; position: relative;" -->
+<!-- 				id="GanttDiv"> -->
+<!-- 				<script type='text/javascript'></script> -->
+<!-- 			</div> -->
+<div class="row mt" style="height:400px">
+        <div style="width:99%;margin-top: 10px;
+    margin-left: 5px; box-shadow: 6px 6px 6px black;">
+            <div class="content-panel" style="height:100%">
 
+                <div class="panel-body text-center" style="height:500px">
+                    <div id="pie" name="image" style="height: 400px; width: 100%; "></div>
+                </div>
+               <h:form>
+<h:selectOneMenu class="btn btn-theme04 dropdown-toggle"  id="projectSelect" value="#{suggestion.idproject}" style="margin-left:350px;width:200px;margin-top:-80px">
+<c:forEach items="#{suggestion.proj()}" var="item">
+<f:selectItem itemLabel="${item.get('name')}" itemValue="${item.get('id')}" />
+							</c:forEach>
+					
+				</h:selectOneMenu>
+				
+				<h:commandButton class="btn btn-theme02" onclick="createChartControl()" value="Submit" style="width:200px;margin-top:-80px"></h:commandButton>
+				</h:form>
+
+            </div>
+        </div>
+    </div>
 <!-- 			<h:commandButton value="gantt" -->
 <!-- 				onclick="createChartControl('GanttDiv');" /> -->
 
