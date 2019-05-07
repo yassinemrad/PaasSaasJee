@@ -19,6 +19,7 @@ import org.primefaces.json.JSONObject;
 
 
 import ReclamationService.responseRemote;
+import user.login;
 
 @ManagedBean
 @RequestScoped
@@ -85,7 +86,7 @@ public class Reclamation {
 		 String jsonString = new JSONObject()
                  .put("objet", object)
                  .put("description", description)
-                 .put("user", 6).toString();
+                 .put("user", login.idU).toString();
 		rec.Add(jsonString);
 		 //rec.getByUser();
 		String navigateTo = "myReclamations?faces-redirect=true";
