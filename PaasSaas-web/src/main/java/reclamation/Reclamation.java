@@ -69,7 +69,8 @@ public class Reclamation {
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Object> getByUser(){
 		
-		String lr= rec.getByUser();		       
+		String lr= rec.getByUser();	
+		System.out.println("aaaaaaaaaaa"+lr);
         JSONArray array = new JSONArray(lr);
     	ArrayList<Object> al=new ArrayList<Object>();
         for (int i = 0; i < array.length(); i++) {
