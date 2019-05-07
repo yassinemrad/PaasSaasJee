@@ -12,7 +12,7 @@
 		<h:panelGroup>
 			<h:form>
 
-<h:panelGrid columns="5" cellpadding="5"
+<h:panelGrid columns="3" cellpadding="5"
 				style=" position: relative;
   top: 50px;
   left: 400px;">
@@ -83,6 +83,10 @@
 										id="${item.get('titre')}">
 										Auteur :
 										<h:outputText value="${item.get('auteur')}" />
+										<!--   <div  style="float:right;width:120px" class="btn btn-theme04" -->
+<!-- 											value="Vote (${item.get('nbvote')})" -->
+<!-- 											action="#{suggestion.Vote(item.get('Idsug'))}"><i class="fa fa-heart"></i> Button</div> -->
+										
 										<h:commandButton style="float:right" class="btn btn-primary"
 											value="Vote (${item.get('nbvote')})"
 											action="#{suggestion.Vote(item.get('Idsug'))}" />
