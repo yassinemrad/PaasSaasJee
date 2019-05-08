@@ -54,13 +54,13 @@ public String getNonTreat(){
 	String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/NonTraiter").request().get().readEntity(String.class);
 	return lr;
 }
-public String getByUser(){
+public String getByUser(int id){
 	
-	String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/GetByU?id="+6).request().get().readEntity(String.class);
+	String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/GetByU?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 	@Override
-	public String Add(String s )
+	public String Add(String s)
 	{
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Create");

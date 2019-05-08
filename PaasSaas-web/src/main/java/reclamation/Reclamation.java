@@ -70,7 +70,7 @@ public class Reclamation {
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Object> getByUser(){
 		
-		String lr= rec.getByUser();	
+		String lr= rec.getByUser(login.idU);	
 		System.out.println("aaaaaaaaaaa"+lr);
         JSONArray array = new JSONArray(lr);
     	ArrayList<Object> al=new ArrayList<Object>();
@@ -83,10 +83,11 @@ public class Reclamation {
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
 	public String add()
 	{
+		System.out.println("reclamation="+login.idU);
 		 String jsonString = new JSONObject()
                  .put("objet", object)
                  .put("description", description)
-                 .put("user", login.idU).toString();
+                 .put("user",login.idU).toString();
 		rec.Add(jsonString);
 		 //rec.getByUser();
 		String navigateTo = "myReclamations?faces-redirect=true";

@@ -25,7 +25,7 @@ public static int idU ;
 	@GET
 	
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-	public void loginn()
+	public String loginn()
 	{
 		String navigateTo="";
 		String lr=ur.login(login,mdp);
@@ -34,17 +34,17 @@ public static int idU ;
 		idU=Integer.parseInt(s);
 		System.out.println(s);
 
-	//	if(lr.equals(null))
-		//{
+		if(lr.equals(null))
+		{
 			
-			// navigateTo = "../login?faces-redirect=true";
+			 navigateTo = "/home/login?faces-redirect=true";
 			
-	//	}
-		//else{
-			// navigateTo = "add?faces-redirect=true";
-	//	}
+		}
+		else{
+			 navigateTo = "/home/log?faces-redirect=true";
+		}
 	
-	  //  return navigateTo;
+	    return navigateTo;
 	}
 	public String getLogin() {
 		return login;
