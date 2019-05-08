@@ -71,7 +71,7 @@ public class Reclamation {
 	public ArrayList<Object> getByUser(){
 		
 		String lr= rec.getByUser(login.idU);	
-		System.out.println("aaaaaaaaaaa"+lr);
+		//System.out.println("aaaaaaaaaaa"+lr);
         JSONArray array = new JSONArray(lr);
     	ArrayList<Object> al=new ArrayList<Object>();
         for (int i = 0; i < array.length(); i++) {
@@ -93,24 +93,8 @@ public class Reclamation {
 		String navigateTo = "myReclamations?faces-redirect=true";
 		return navigateTo;
 	}
-	@PUT
-	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-	public void update()
-	{
 
-		 String jsonString = new JSONObject()
-                .put("objet", object)
-                .put("description", description).put("id", id)
-                .toString();
-		rec.Update(jsonString);
-	}
-	public String updatee(int i,String o , String d)
-	{
-		this.setId(i);
-		this.setObject(o);
-		this.setDescription(d);
-		return "update?faces-redirect=true";
-	}
+
 	@DELETE
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
 	public void delete(int id)
