@@ -73,5 +73,16 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 	
 	}
 	
+	public String etat(String s)
+	{
+	
+		
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target("http://localhost:13515/api/SugestApi/etat");
+		Invocation.Builder invocationBuilder = target.request();
+		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
+		return response.readEntity(String.class);
+	}
+	
 	
 }

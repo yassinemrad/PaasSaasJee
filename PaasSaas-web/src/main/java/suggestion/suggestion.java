@@ -143,6 +143,19 @@ public class suggestion {
 		return "Panelsugst?faces-redirect=true";
 	}
 
+	@PUT
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public String etat(int id)
+	{
+	//	System.out.println("Vote try");
+
+		String jsonString = new JSONObject()
+				.put("Idsug", id)
+				.toString();
+		sug.etat(jsonString);
+		return "Panelsugst?faces-redirect=true";
+	}
+
 	public int getId() {
 		return id;
 	}

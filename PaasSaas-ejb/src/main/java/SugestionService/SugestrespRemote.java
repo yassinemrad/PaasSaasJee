@@ -9,4 +9,5 @@ public interface SugestrespRemote {
 	 public String Update(String s );
 	 public String Votes(String s );
 	 public String Deletee (int id);
+	 public String etat(String s);
 }
