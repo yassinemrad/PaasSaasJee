@@ -19,6 +19,42 @@
         <div class="centered">
             <h4><i class="fa fa-envelope"></i><br />Arctic@esprit.tn</h4>
         </div>
+      <div style="margin-top:-50px"><h2><h:outputText value=" Rate our application PLZ:" style="color:black" /></h2><br/></div>  
+        <h:form>
+	<br/>
+		<p:growl id="messages" showDetail="true" />
+
+		<h:panelGrid columns="2" cellpadding="5" style="margin-top:-40px">
+
+
+
+
+			
+			<p:rating value="#{ratingView.rating3}">
+				<p:ajax event="rate" listener="#{ratingView.onrate}"
+					update="messages" />
+				<p:ajax event="cancel" listener="#{ratingView.oncancel}"
+					update="messages" />
+			</p:rating><br/>
+			<br/><h:outputText value="Username" style="color:black"/>
+<h:inputText value="#{ratingView.username}"/><br/>
+
+		</h:panelGrid>
+
+		<p:commandButton value="Submit" update="display" class="btn btn-primary"
+			oncomplete="PF('dlg').show()" style="margin:5px"
+			action="#{ratingView.add()}" />
+
+		<p:dialog header="Values" widgetVar="dlg" showEffect="fade"
+			hideEffect="fade">
+			<h:panelGrid id="display" columns="2" cellpadding="5">
+
+
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingView.rating3}" />
+			</h:panelGrid>
+		</p:dialog>
+	</h:form>
     </div>
    
 	</ui:define>
