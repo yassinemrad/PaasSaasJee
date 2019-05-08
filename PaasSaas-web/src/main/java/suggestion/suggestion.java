@@ -26,6 +26,7 @@ import org.primefaces.json.JSONObject;
 import StatService.StatRespRemote;
 import SugestionService.Sugestresp;
 import SugestionService.SugestrespRemote;
+import user.login;
 
 @ManagedBean
 @RequestScoped
@@ -272,7 +273,18 @@ public class suggestion {
 	// 	System.out.println(array);
 	//System.out.println(obj.getInt("id"));
 
+	public String redirectList()
+	{
+		String navigateTo="";
+		if(login.role.equals("Admin"))
+		{
+		 navigateTo = "../suggestion/listadmin?faces-redirect=true";
+		}else{
+			 navigateTo = "../suggestion/Panelsugst?faces-redirect=true";
 
+		}
+		return navigateTo;
+	}
 
 
 
