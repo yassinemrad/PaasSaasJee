@@ -25,6 +25,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 import awsUpload.uploadRemote;
+import user.login;
 @ManagedBean
 @RequestScoped
 
@@ -46,7 +47,7 @@ public String addBacket()
 	String jsonString = new JSONObject()
             .put("name", Backet)
             
-            .put("user", 6).toString();
+            .put("user", login.idU).toString();
 	u.createBucket(Backet, jsonString);
 	return "display?faces-redirect=true";
 }
@@ -56,7 +57,7 @@ public String addBacket()
 @javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
 public ArrayList<Object> getliste(){
 	
-	String lr= u.getByUser();	       
+	String lr= u.getByUser(login.idU);	       
 	JSONArray  array = new JSONArray(lr);
 	ArrayList<Object> al=new ArrayList<Object>();
     for (int i = 0; i < array.length(); i++) {

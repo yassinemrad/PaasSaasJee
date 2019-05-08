@@ -13,7 +13,7 @@ public interface uploadRemote {
 	public void uploadfile(String bac , File f , String nom);
 	public List<String> listBackets();
 	 public void createBucket(String name,String s);
-	 public String getByUser();
+	 public String getByUser(int id);
 	 public List<String> ListFile(String name);
 	 public void deleteFile(String bucket , String file);
 }

@@ -55,6 +55,11 @@ public static String role ;
 	
 	    return navigateTo;
 	}
+	public String redirectLogin()
+	{
+		String navigateTo = "log?faces-redirect=true";
+		return navigateTo;
+	}
 	public String getLogin() {
 		return login;
 	}

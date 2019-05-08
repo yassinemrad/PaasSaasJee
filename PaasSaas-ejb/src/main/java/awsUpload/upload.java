@@ -68,9 +68,9 @@ public class upload implements uploadRemote, uploadLocal {
 		}
 		return l;
 	}
-	public String getByUser(){
+	public String getByUser(int id){
 		
-		String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiBuckets/GetByU?id="+6).request().get().readEntity(String.class);
+		String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiBuckets/GetByU?id="+id).request().get().readEntity(String.class);
 		return lr;
 	}
 	public List<String> listBackets()
