@@ -22,6 +22,7 @@ public class login {
 private String login ;
 private String mdp ;
 public static int idU ;
+public static String role ;
 	@GET
 	
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
@@ -29,19 +30,27 @@ public static int idU ;
 	{
 		String navigateTo="";
 		String lr=ur.login(login,mdp);
+		//System.out.println("user"+lr);
+		if(lr.equals("null"))
+		{
+			 navigateTo = "log?faces-redirect=true";
+			
+
+		}else{
 		JSONObject js=new JSONObject(lr);
+	//	System.out.println("user"+lr);
+
 		String s=js.get("Id").toString();
 		idU=Integer.parseInt(s);
-		System.out.println(s);
-
-		if(lr.equals(null))
-		{
+		role=js.get("Role").toString();
+		System.out.println("role="+role);
+		//System.out.println("id"+s);
+		
+		
+			 navigateTo = "home?faces-redirect=true";
 			
-			 navigateTo = "/home/login?faces-redirect=true";
+		
 			
-		}
-		else{
-			 navigateTo = "/home/log?faces-redirect=true";
 		}
 	
 	    return navigateTo;
