@@ -147,6 +147,18 @@ public class Reclamation {
 		String navigateTo = "myReclamations?faces-redirect=true";
 		return navigateTo;
 	}
+	public String redirectList()
+	{
+		String navigateTo="";
+		if(login.role.equals("Admin"))
+		{
+		 navigateTo = "../Reclmation/display?faces-redirect=true";
+		}else{
+			 navigateTo = "../Reclmation/myReclamations?faces-redirect=true";
+
+		}
+		return navigateTo;
+	}
 	public String getObject() {
 		return object;
 	}

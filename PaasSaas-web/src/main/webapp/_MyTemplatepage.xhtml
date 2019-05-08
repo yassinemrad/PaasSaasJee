@@ -44,16 +44,7 @@
 					data-original-title="Toggle Navigation"></div>
 			</div>
 
-			<h:panelGrid columns="2" cellpadding="5"
-				style=" position: relative;
-    top: 40px;
-  left: 400px;">
-				<h:outputText value="Average:" style="color:white" />
-				<br />
 
-
-				<p:rating value="#{ratingView.getAll()}"  readonly="true" />
-			</h:panelGrid>
 
 			<!--logo start-->
 			<a href="index.html" class="logo"><b>DASH<span>IO</span></b></a>
@@ -203,7 +194,8 @@
 			<div class="top-menu">
 				<ul class="nav pull-right top-menu">
 
-					<li><a class="logout" >Logout</a></li>
+					<li>					<h:commandButton value="logout"  class="logout" action="#{login.redirectLogin()}"/>
+</li>
 
 				</ul>
 			</div>
@@ -251,7 +243,7 @@
 					<li><a> <i class="fa fa-th"></i> <span>Forum </span> <span
 							class="label label-theme pull-right mail-info"></span>
 					</a></li>
-					<li><a> <i class="fa fa-envelope"></i> <span>Reclamation
+					<li ><a href="#{reclamation.redirectList()}"> <i class="fa fa-envelope"></i> <span>Reclamation
 						</span> <span class="label label-theme pull-right mail-info"></span>
 					</a></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
@@ -277,7 +269,7 @@
 
 						</ul></li>
 
-					<li class="sub-menu"><a> <i class="fa fa-comments-o"></i>
+					<li class="sub-menu"><a  href="../awsBucket/display.jsf"> <i class="fa fa-comments-o"></i>
 							<span>Chat Room</span>
 					</a></li>
 
