@@ -8,4 +8,5 @@ public interface SugestrespRemote {
 	 public String getAll();
 	 public String Update(String s );
 	 public String Votes(String s );
+	 public String Deletee (int id);
 }

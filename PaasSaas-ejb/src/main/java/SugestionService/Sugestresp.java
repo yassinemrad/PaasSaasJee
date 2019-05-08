@@ -65,5 +65,13 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 		return response.readEntity(String.class);
 	}
 	
+	public String Deletee (int id)
+	{
+	
+		String lr = c.target("http://localhost:13515/api/SugestApi/Delete?id="+id).request().delete().readEntity(String.class);
+		return lr;
+	
+	}
+	
 	
 }
