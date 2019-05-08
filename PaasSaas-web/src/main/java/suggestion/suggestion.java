@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.json.JsonArray;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -247,6 +248,14 @@ public class suggestion {
 		return js;
 	}
 
+	@DELETE
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public String delete(int id)
+	{
+		sug.Deletee(id);
+		return "Panelsugst?faces-redirect=true";
+
+	}
 	// 	System.out.println(array);
 	//System.out.println(obj.getInt("id"));
 
