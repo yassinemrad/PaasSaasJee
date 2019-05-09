@@ -39,7 +39,7 @@ public class upload implements uploadRemote, uploadLocal {
 
 
     static javax.ws.rs.client.Client c= ClientBuilder.newClient();
-	AWSCredentials Creadendials =new BasicAWSCredentials("AKIAJDP6M3WIRWXC5WSQ","84c2/DK1i3Uckr9TPOhZfkJtAl5HCuXhti4NXWfX");
+	AWSCredentials Creadendials =new BasicAWSCredentials("","");
 	final AmazonS3 s3=AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Creadendials)).withRegion(Regions.EU_WEST_1).build();
 	
 	public void uploadfile(String bac , File f , String nom)
