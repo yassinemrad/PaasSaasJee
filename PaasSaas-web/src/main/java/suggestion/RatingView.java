@@ -19,13 +19,12 @@ import RatingService.RatingrespRemote;
 @ManagedBean
 public class RatingView {
      
-    private Integer rating1;   
-    private Integer rating2;   
+      
     private Integer rating3;   
     private Integer rating4 = 3;
      
     public void onrate(RateEvent rateEvent) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Application", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
      
@@ -34,9 +33,7 @@ public class RatingView {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
  
-    public Integer getRating1() {
-        return rating1;
-    }
+  
  
     public String getUsername() {
 		return username;
@@ -46,17 +43,6 @@ public class RatingView {
 		this.username = username;
 	}
 
-	public void setRating1(Integer rating1) {
-        this.rating1 = rating1;
-    }
- 
-    public Integer getRating2() {
-        return rating2;
-    }
- 
-    public void setRating2(Integer rating2) {
-        this.rating2 = rating2;
-    }
  
     public Integer getRating3() {
         return rating3;
@@ -66,13 +52,7 @@ public class RatingView {
         this.rating3 = rating3;
     }
  
-    public Integer getRating4() {
-        return rating4;
-    }
  
-    public void setRating4(Integer rating4) {
-        this.rating4 = rating4;
-    }
     @EJB
 	private RatingrespRemote rating ;
 	private int nbrating ;
@@ -80,7 +60,7 @@ public class RatingView {
 	
 	@POST
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
-	public void add()
+	public String add()
 	{
 		 String jsonString = new JSONObject()
                  .put("nbrating", this.rating3)
@@ -89,6 +69,7 @@ public class RatingView {
                  .toString();
 		rating.Add(jsonString);
 		System.out.println(jsonString);
+		return  "home?faces-redirect=true";
 		 //rec.getByUser();
 	}
 

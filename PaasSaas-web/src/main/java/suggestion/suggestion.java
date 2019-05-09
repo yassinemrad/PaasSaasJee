@@ -26,6 +26,7 @@ import org.primefaces.json.JSONObject;
 import StatService.StatRespRemote;
 import SugestionService.Sugestresp;
 import SugestionService.SugestrespRemote;
+import user.login;
 
 @ManagedBean
 @RequestScoped
@@ -141,6 +142,19 @@ public class suggestion {
 				.toString();
 		sug.Votes(jsonString);
 		return "Panelsugst?faces-redirect=true";
+	}
+
+	@PUT
+	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	public String etat(int id)
+	{
+	//	System.out.println("Vote try");
+
+		String jsonString = new JSONObject()
+				.put("Idsug", id)
+				.toString();
+		sug.etat(jsonString);
+		return "listadmin?faces-redirect=true";
 	}
 
 	public int getId() {
@@ -259,7 +273,18 @@ public class suggestion {
 	// 	System.out.println(array);
 	//System.out.println(obj.getInt("id"));
 
-
+//	public String redirectList()
+//	{
+//		String navigateTo="";
+//		if(login.role.equals("Admin"))
+//		{
+//		 navigateTo = "../suggestion/listadmin?faces-redirect=true";
+//		}else{
+//			 navigateTo = "../suggestion/Panelsugst?faces-redirect=true";
+//
+//		}
+//		return navigateTo;
+//	}
 
 
 

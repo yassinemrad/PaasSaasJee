@@ -17,6 +17,8 @@
 <link href="../Template/img/favicon.png" rel="icon" />
 <link href="../Template/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
+	<script src="../Template/lib/jquery/jquery.min.js"></script>
+	<script src="../Template/lib/bootstrap/js/bootstrap.min.js"></script>
 
 <link href="../Template/lib/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet" />
@@ -30,8 +32,13 @@
 
 <link href="../Template/css/style.css" rel="stylesheet" />
 <link href="../Template/css/style-responsive.css" rel="stylesheet" />
-<script src="../Template/lib/chart-master/Chart.js"></script>
+  <link href="../Template/lib/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
 
+<script src="../Template/lib/chart-master/Chart.js"></script>
+<script src="../Template/lib/fullcalendar/fullcalendar.min.js"></script>
+<script src="../Template/lib/calendar-conf-events.js"></script>
+<link href="../Content/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="../Content/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
 </h:head>
 
@@ -215,7 +222,7 @@
 							width="80" /></a>
 					</p>
 					<h5 class="centered"></h5>
-					<li class="mt"><a class="active" href="Home/Index"> <i
+					<li class="mt"><a class="active" href="../home/home.jsf"> <i
 							class="fa fa-dashboard"></i> <span>Dashboard</span>
 					</a></li>
 
@@ -243,14 +250,12 @@
 					<li><a> <i class="fa fa-th"></i> <span>Forum </span> <span
 							class="label label-theme pull-right mail-info"></span>
 					</a></li>
-					<li ><a href="#{reclamation.redirectList()}"> <i class="fa fa-envelope"></i> <span>Reclamation
-						</span> <span class="label label-theme pull-right mail-info"></span>
-					</a></li>
+					
 					<li class="sub-menu"><a href="javascript:;"> <i
-							class=" fa fa-bar-chart-o"></i> <span>Charts</span>
+							class=" fa fa-bar-chart-o"></i> <span>suggestion </span>
 					</a>
 						<ul class="sub">
-							<li><a  href="../suggestion/Panelsugst.jsf"> <i class="glyphicon glyphicon-stats"></i> <span>
+							<li><a  href="../suggestion/Panelsugst.jsf"> <i class="fa-list-ul"></i> <span>
 										Listes suggestions </span> <span
 									class="label label-theme pull-right mail-info"></span>
 							</a></li>
@@ -263,10 +268,12 @@
 							
 							
 							<li><a href="../suggestion/Suggestionform.jsf" target=""> <i
-									class="fa fa-line-chart"></i> <span>Numbre User Per
-										Month </span> <span class="label label-theme pull-right mail-info"></span>
+									class="fa fa-line-chart"></i> <span>Ajout de suggestion </span> <span class="label label-theme pull-right mail-info"></span>
 							</a></li>
-
+<li><a href="../suggestion/listadmin.jsf" target=""> <i
+									class="fa fa-line-chart"></i> <span>Liste admin </span> <span class="label label-theme pull-right mail-info"></span>
+							</a></li>
+						
 						</ul></li>
 
 					<li class="sub-menu"><a  href="../awsBucket/display.jsf"> <i class="fa fa-comments-o"></i>
@@ -276,7 +283,7 @@
 				</ul>
 
 
-				<!-- sidebar menu end-->
+		
 			</div>
 		</aside>
 		<!--sidebar end-->
