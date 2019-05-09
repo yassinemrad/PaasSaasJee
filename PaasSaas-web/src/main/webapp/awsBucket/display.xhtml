@@ -18,7 +18,7 @@ template="/_MyTemplatepage.xhtml"
 <br></br>
 <h:outputText value="You have  #{awsbucket.getliste().size()} Backet storage" /> 
 <br></br>
-<h:selectOneMenu value="#{awsbucket.backet}" 
+<h:selectOneMenu value="#{awsbucket.backet}"  onchange="awsbucket.getFile(awsbucket.backet)"
      >
 <f:selectItem itemLabel="Select your Backet" itemValue="#{awsbucket.backet}"/>
 <c:forEach items="#{awsbucket.getliste()}" var="bac">
