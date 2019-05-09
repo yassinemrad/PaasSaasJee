@@ -29,7 +29,7 @@ public class Taskresponse implements TaskresponseRemote, TaskresponseLocal {
     }
     static javax.ws.rs.client.Client c= ClientBuilder.newClient();
     //set the appropriate URL
-	static String getUrl = "http://localhost:21514/api/TasksApi/GetAll";
+	static String getUrl = "http://apidotnet.eu-west-1.elasticbeanstalk.com/api/TasksApi/GetAll";
 	
 	
 	public String getAll(){
@@ -37,7 +37,7 @@ public class Taskresponse implements TaskresponseRemote, TaskresponseLocal {
 		String lr = c.target(getUrl).request().get().readEntity(String.class);
 		return lr;
 	}
-	static String getUrl1 = "http://localhost:21514/api/ModuleApi/GetAllM";
+	static String getUrl1 = "http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ModuleApi/GetAllM";
 	
 	
 	public String getAllM(){
@@ -48,18 +48,18 @@ public class Taskresponse implements TaskresponseRemote, TaskresponseLocal {
 
 public String getTaskById(int id){
 	
-	String lr = c.target("http://localhost:21514/api/TasksApi/byid?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/TasksApi/byid?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 public String getUserById(int id){
 	
-	String lr = c.target("http://localhost:21514/api/TasksApi/Getbyid?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/TasksApi/Getbyid?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 
 public String getByUser(){
 	
-	String lr = c.target("http://localhost:13515/api/ApiReclamation/GetByU?id="+6).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/GetByU?id="+6).request().get().readEntity(String.class);
 	return lr;
 }
 	@Override
@@ -68,7 +68,7 @@ public String getByUser(){
 	
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:21514/api/TasksApi/Ajout");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/TasksApi/Ajout");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
@@ -79,7 +79,7 @@ public String getByUser(){
 	
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:21514/api/TasksApi/change");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/TasksApi/change");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
@@ -88,7 +88,7 @@ public String getByUser(){
 	public String Delete (int id  )
 	{
 	
-		String lr = c.target("http://localhost:21514/api/TasksApi/Delete?id="+id).request().delete().readEntity(String.class);
+		String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/TasksApi/Delete?id="+id).request().delete().readEntity(String.class);
 		return lr;
 	
 	}

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui"
+template="/_MyTemplatepage.xhtml">
+	<ui:define name="test">
+<h3><i class="fa fa-angle-right"></i> Create Project</h3>
+
+<p:messages id="msgs" />
+
+
+<h:form>
+
+<table>
+<tr>
+<td>
+
+<h:outputText value="Name" />
+</td>
+<td>
+ <h:inputText value="#{projet.name}" />
+ </td>
+</tr>
+<tr>
+<td>
+<h:outputText value="Description" /> 
+</td>
+<td>
+<h:inputText value="#{projet.description}" />
+
+
+ </td>
+</tr>
+<tr>
+<td>
+<h:outputText value="startDate" /> 
+</td>
+<td>
+<h:inputText value="#{projet.startDate}" />
+
+
+ </td>
+</tr>
+<tr>
+<td>
+<h:outputText value="entDate" /> 
+</td>
+<td>
+<h:inputText value="#{projet.endDate}" />
+
+
+ </td>
+</tr>
+<tr>
+<td>
+<h:outputText value="budget" /> 
+</td>
+<td>
+<h:inputText value="#{projet.budget}" />
+
+
+ </td>
+</tr>
+<tr>
+<td></td>
+<td>
+<div class="form-send">
+<h:commandButton class="btn btn-theme" value="rec" action="#{projet.add()}" />
+<h:commandButton class="btn btn-theme04" value="Cancel"
+							action="#{projet.redirectList()}" />
+							</div>
+</td>
+</tr>
+</table>
+</h:form>
+
+</ui:define>
+
+</ui:composition>

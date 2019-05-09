@@ -31,7 +31,7 @@ public class response implements responseRemote, responseLocal {
     }
     static javax.ws.rs.client.Client c= ClientBuilder.newClient();
     //set the appropriate URL
-	static String getUrl = "http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/GetAll";
+	static String getUrl = "http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/GetAll";
 	
 	
 	public String getAll(){
@@ -41,29 +41,29 @@ public class response implements responseRemote, responseLocal {
 	}
 public String getTreat(){
 		
-		String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Traiter").request().get().readEntity(String.class);
+		String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Traiter").request().get().readEntity(String.class);
 		return lr;
 	}
 public String getUserById(int id){
 	
-	String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiUser/GetByid?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiUser/GetByid?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 public String getNonTreat(){
 	
-	String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/NonTraiter").request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/NonTraiter").request().get().readEntity(String.class);
 	return lr;
 }
 public String getByUser(int id){
 	
-	String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/GetByU?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/GetByU?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 	@Override
 	public String Add(String s)
 	{
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Create");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Create");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
@@ -74,7 +74,7 @@ public String getByUser(int id){
 	
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Update");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Update");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
@@ -83,7 +83,7 @@ public String getByUser(int id){
 	public String Delete (int id  )
 	{
 	
-		String lr = c.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Delete?id="+id).request().delete().readEntity(String.class);
+		String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Delete?id="+id).request().delete().readEntity(String.class);
 		return lr;
 	
 	}
@@ -93,7 +93,7 @@ public String getByUser(int id){
 	
 
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://arcticjeeapi.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Traitement");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiReclamation/Traitement");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);

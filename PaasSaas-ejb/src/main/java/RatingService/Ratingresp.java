@@ -28,14 +28,14 @@ public class Ratingresp implements RatingrespRemote, RatingrespLocal {
    	
    		
    		Client client = ClientBuilder.newClient();
-   		WebTarget target = client.target("http://localhost:13515/api/SugestApi/rate");
+   		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/rate");
    		Invocation.Builder invocationBuilder = target.request();
    		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
    		return response.readEntity(String.class);
    	}
        static javax.ws.rs.client.Client c= ClientBuilder.newClient();
        //set the appropriate URL
-   	static String getUrl = "http://localhost:13515/api/SugestApi/GetAllrat";
+   	static String getUrl = "http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/GetAllrat";
    	
    	
    	public int getAll(){

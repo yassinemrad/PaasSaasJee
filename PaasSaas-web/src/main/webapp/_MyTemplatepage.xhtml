@@ -200,9 +200,9 @@
 			</div>
 			<div class="top-menu">
 				<ul class="nav pull-right top-menu">
+<li><a class="logout" href="#{login.redirectLogin()}">Logout</a></li>
+					
 
-					<li>					<h:commandButton value="logout"  class="logout" action="#{login.redirectLogin()}"/>
-</li>
 
 				</ul>
 			</div>
@@ -231,10 +231,10 @@
 							class="fa fa-desktop"></i> <span>Tasks</span>
 					</a>
 						<ul class="sub">
-							<li><a>Superviser</a></li>
-							<li><a>Affecter</a></li>
-							<li><a>Calandrier</a></li>
-							<li><a></a></li>
+							<li><a  href="../Tasks/AllTasks.jsf">Show Tasks</a></li>
+							<li><a  href="../Tasks/calander.jsf">Calendar</a></li>
+							
+							
 						</ul></li>
 					<li class="sub-menu dcjq-parent-li"><a> <i
 							class="fa fa-map-marker"></i> <span>Module</span>
@@ -250,16 +250,19 @@
 					<li><a> <i class="fa fa-th"></i> <span>Forum </span> <span
 							class="label label-theme pull-right mail-info"></span>
 					</a></li>
-					
+						
+					<li ><a href="#{reclamation.redirectList()}"> <i class="fa fa-envelope"></i> <span>Reclamation
+						</span> <span class="label label-theme pull-right mail-info"></span>
+					</a></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
-							class=" fa fa-bar-chart-o"></i> <span>suggestion </span>
+							class=" fa fa-address-book"></i> <span>suggestion </span>
 					</a>
 						<ul class="sub">
-							<li><a  href="../suggestion/Panelsugst.jsf"> <i class="fa-list-ul"></i> <span>
+							<li><a  href="#{suggestion.redirectList()}"> <i class="fa fa-list"></i> <span>
 										Listes suggestions </span> <span
 									class="label label-theme pull-right mail-info"></span>
 							</a></li>
-							<li><a href="../rating/capture.jsf"> <i class="glyphicon glyphicon-stats"></i> <span>
+							<li><a href="../rating/capture.jsf"> <i class="fa fa-ravelry"></i> <span>
 										Rate de l'application </span> <span
 									class="label label-theme pull-right mail-info"></span>
 							</a></li>
@@ -268,16 +271,14 @@
 							
 							
 							<li><a href="../suggestion/Suggestionform.jsf" target=""> <i
-									class="fa fa-line-chart"></i> <span>Ajout de suggestion </span> <span class="label label-theme pull-right mail-info"></span>
+									class="fa fa-adn"></i> <span>Ajout de suggestion </span> <span class="label label-theme pull-right mail-info"></span>
 							</a></li>
 <li><a href="../suggestion/listadmin.jsf" target=""> <i
-									class="fa fa-line-chart"></i> <span>Liste admin </span> <span class="label label-theme pull-right mail-info"></span>
+									class="fa fa-list"></i> <span>Liste admin </span> <span class="label label-theme pull-right mail-info"></span>
 							</a></li>
 						
-						</ul></li>
-
-					<li class="sub-menu"><a  href="../awsBucket/display.jsf"> <i class="fa fa-comments-o"></i>
-							<span>Chat Room</span>
+						</ul></li>					<li class="sub-menu"><a  href="../awsBucket/display.jsf"> <i class="fa fa-comments-o"></i>
+							<span>AWS storage</span>
 					</a></li>
 
 				</ul>

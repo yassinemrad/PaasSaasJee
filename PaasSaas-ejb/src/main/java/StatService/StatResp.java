@@ -20,7 +20,7 @@ public class StatResp implements StatRespRemote, StatRespLocal {
     }
     static javax.ws.rs.client.Client c= ClientBuilder.newClient();
     //set the appropriate URL
-	static String getUrl = "http://localhost:13515/api/Statapi/dateuser";
+	static String getUrl = "http://apidotnet.eu-west-1.elasticbeanstalk.com/api/Statapi/dateuser";
 	
 	
 	public String getAllStat(){
@@ -30,23 +30,23 @@ public class StatResp implements StatRespRemote, StatRespLocal {
 	}
 	public String getBytask(int id){
 		
-		String lr = c.target("http://localhost:13515/api/StatApi?id="+id).request().get().readEntity(String.class);
+		String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/StatApi?id="+id).request().get().readEntity(String.class);
 		return lr;
 	}
 	
 public String getprogtodo(int id){
 		
-		String lr = c.target("http://localhost:13515/api/StatApi/etatprogtodo?id="+id).request().get().readEntity(String.class);
+		String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/StatApi/etatprogtodo?id="+id).request().get().readEntity(String.class);
 		return lr;
 	}
 public String getprogdone(int id){
 	
-	String lr = c.target("http://localhost:13515/api/StatApi/etatprogdone?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/StatApi/etatprogdone?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 public String getprogdoing(int id){
 	
-	String lr = c.target("http://localhost:13515/api/StatApi/etatprogdoing?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/StatApi/etatprogdoing?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 
@@ -54,16 +54,16 @@ public String getprogdoing(int id){
 
 
 public String getAlls(int id){
-	String lr = c.target("http://localhost:13515/api/Statapi/listt?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/Statapi/listt?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 public String getAllp(){
-	String lr = c.target("http://localhost:13515/api/Statapi/listp").request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/Statapi/listp").request().get().readEntity(String.class);
 	return lr;
 }
 
 public String getprojbyid(int id){
-	String lr = c.target("http://localhost:13515/api/Statapi/listpid?id="+id).request().get().readEntity(String.class);
+	String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/Statapi/listpid?id="+id).request().get().readEntity(String.class);
 	return lr;
 }
 }

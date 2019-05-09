@@ -20,7 +20,7 @@ public class User implements UserRemote, UserLocal {
     
     public String login(String l , String p){
     	
-    	String lr = c.target("http://localhost:34273/api/ApiUser/login?l="+l+"&p="+p).request().get().readEntity(String.class);
+    	String lr = c.target("http://dotnetapilogin.eu-west-1.elasticbeanstalk.com/api/ApiUser/login?l="+l+"&p="+p).request().get().readEntity(String.class);
     	return lr;
     }
 }

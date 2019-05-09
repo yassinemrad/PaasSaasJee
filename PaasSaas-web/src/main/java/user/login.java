@@ -57,7 +57,7 @@ public static String role ;
 	}
 	public String redirectLogin()
 	{
-		String navigateTo = "log?faces-redirect=true";
+		String navigateTo = "../home/log.jsf?faces-redirect=true";
 		return navigateTo;
 	}
 	public String getLogin() {
