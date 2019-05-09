@@ -61,10 +61,16 @@
 										id="${item.get('titre')}">
 										Auteur :
 										<h:outputText value="${item.get('auteur')}" />
-										<h:commandButton  class="btn btn-danger" action="#{suggestion.delete(item.get('Idsug'))}"
-									value="Delete" style="float:right" >
+										<c:if test="#{item.get('etats') == 1}">
+										<h:commandButton  class="btn btn-danger" action="#{suggestion.etat(item.get('Idsug'))}"
+									value="Validé" style="float:right" />
+										</c:if> 
+										<c:if test="#{item.get('etats') == 0}">
+										<h:outputLabel style="float:right;margin-top:8px">deja validé</h:outputLabel>
+											
+										</c:if>
 									
-									 </h:commandButton>
+									 
 										<h:commandButton style="float:right" class="btn btn-primary"
 											value="Vote (${item.get('nbvote')})"
 											action="#{suggestion.Vote(item.get('Idsug'))}" />
@@ -92,7 +98,7 @@
 									value="Validé" style="float:right" />
 										</c:if> 
 										<c:if test="#{item.get('etats') == 0}">
-										<h:outputLabel style="float:right">deja validé</h:outputLabel>
+										<h:outputLabel style="float:right;margin-top:8px">deja validé</h:outputLabel>
 											
 										</c:if> 
 										<h:commandButton style="float:right" class="btn btn-primary"
@@ -117,9 +123,14 @@
 										id="${item.get('titre')}">
 										Auteur :
 										<h:outputText value="${item.get('auteur')}" />
-										<h:commandButton  class="btn btn-danger" action="#{suggestion.delete(item.get('Idsug'))}"
-									value="Delete" style="float:right" />
-
+										<c:if test="#{item.get('etats') == 1}">
+										<h:commandButton  class="btn btn-danger" action="#{suggestion.etat(item.get('Idsug'))}"
+									value="Validé" style="float:right" />
+										</c:if> 
+										<c:if test="#{item.get('etats') == 0}">
+										<h:outputLabel style="float:right;margin-top:8px">deja validé</h:outputLabel>
+											
+										</c:if>
 
 
 
