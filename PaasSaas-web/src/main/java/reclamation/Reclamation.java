@@ -152,9 +152,9 @@ public class Reclamation {
 		String navigateTo="";
 		if(login.role.equals("Admin"))
 		{
-		 navigateTo = "../Reclmation/display?faces-redirect=true";
+		 navigateTo = "../Reclmation/display.jsf?faces-redirect=true";
 		}else{
-			 navigateTo = "../Reclmation/myReclamations?faces-redirect=true";
+			 navigateTo = "../Reclmation/myReclamations.jsf?faces-redirect=true";
 
 		}
 		return navigateTo;

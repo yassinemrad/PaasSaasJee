@@ -273,18 +273,18 @@ public class suggestion {
 	// 	System.out.println(array);
 	//System.out.println(obj.getInt("id"));
 
-//	public String redirectList()
-//	{
-//		String navigateTo="";
-//		if(login.role.equals("Admin"))
-//		{
-//		 navigateTo = "../suggestion/listadmin?faces-redirect=true";
-//		}else{
-//			 navigateTo = "../suggestion/Panelsugst?faces-redirect=true";
-//
-//		}
-//		return navigateTo;
-//	}
+	public String redirectList()
+	{
+		String navigateTo="";
+		if(login.role.equals("Admin"))
+		{
+		 navigateTo = "../suggestion/listadmin.jsf?faces-redirect=true";
+		}else{
+			 navigateTo = "../suggestion/Panelsugst.jsf?faces-redirect=true";
+
+		}
+		return navigateTo;
+	}
 
 
 

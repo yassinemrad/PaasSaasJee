@@ -12,23 +12,27 @@ template="/_MyTemplatepage.xhtml"
 <hr></hr>
 <h:panelGroup>
 <h:form enctype="multipart/form-data">
-<h:commandButton action="#{awsbucket.redirectAddBacket()}" value="Create Backet" />
-
 <h:outputScript library="javax.faces" name="jsf.js" />
+
+<h:commandButton  class="btn btn-success" value= "+" action="#{awsbucket.redirectAddBacket()}"   />
+
+
+<h2><h:outputText value="You have  #{awsbucket.getliste().size()} Backet storage" /> </h2>
 <br></br>
-<h:outputText value="You have  #{awsbucket.getliste().size()} Backet storage" /> 
-<br></br>
+ <div class="col-lg-12 main-chart">
+	<div class="form-horizontal">
 <h:selectOneMenu value="#{awsbucket.backet}"  onchange="awsbucket.getFile(awsbucket.backet)"
-     >
-<f:selectItem itemLabel="Select your Backet" itemValue="#{awsbucket.backet}"/>
+     styleClass="form-control">
+<f:selectItem itemLabel="Select your Backet" itemValue="#{awsbucket.backet}" styleClass="form-control"/>
 <c:forEach items="#{awsbucket.getliste()}" var="bac">
-<f:selectItem itemLabel="${bac.get('name')}" itemValue="${bac.get('name')}" /> 
+<f:selectItem itemLabel="${bac.get('name')}" itemValue="${bac.get('name')}" styleClass="form-control"/> 
 
 
 </c:forEach>
    <f:ajax event="change" update="#{awsbucket.backet}" />
 </h:selectOneMenu>
-<h:commandButton action="#{awsbucket.getFile(awsbucket.backet)}" value="Show files" />
+<br></br>
+<h:commandButton class="btn btn-theme04" action="#{awsbucket.getFile(awsbucket.backet)}" value="Show files" />
 
 <div>
 
@@ -40,13 +44,16 @@ template="/_MyTemplatepage.xhtml"
 <br></br>
 <br></br>
 </div>
-	<h:inputFile id="file" value="#{awsbucket.uf}" />
-			<br></br>
-			<br></br>
+	<h:inputFile class = "form-control" id="file" value="#{awsbucket.uf}" />
 			
-			<h:inputText value="#{awsbucket.fileName}" />
+			
+			<h:inputText class = "form-control" value="#{awsbucket.fileName}" style="margin-top:30px"/>
+			<br></br>
+			<br></br>
 			<h:commandButton id="button" action="#{awsbucket.addFile(awsbucket.backet)}"
-				value="Upload" />
+				 class="btn btn-theme" value="Upload" />
+				</div>
+				</div>
 </h:form>
 <br>
 </br>

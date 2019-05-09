@@ -70,7 +70,7 @@ public class upload implements uploadRemote, uploadLocal {
 	}
 	public String getByUser(int id){
 		
-		String lr = c.target("http://localhost:13515/api/ApiBuckets/GetByU?id="+id).request().get().readEntity(String.class);
+		String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiBuckets/GetByU?id="+id).request().get().readEntity(String.class);
 		return lr;
 	}
 	public List<String> listBackets()
@@ -87,7 +87,7 @@ public class upload implements uploadRemote, uploadLocal {
 	public void createBucket(String name,String s)
 	{
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:13515/api/ApiBuckets/Create");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/ApiBuckets/Create");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
 		s3.createBucket(name);

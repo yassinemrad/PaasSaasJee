@@ -28,14 +28,14 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 	
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:13515/api/SugestApi/Create");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/Create");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.post(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
 	}
     static javax.ws.rs.client.Client c= ClientBuilder.newClient();
     //set the appropriate URL
-	static String getUrl = "http://localhost:13515/api/SugestApi/GetAll";
+	static String getUrl = "http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/GetAll";
 	
 	
 	public String getAll(){
@@ -49,7 +49,7 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 	
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:13515/api/SugestApi/Update");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/Update");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
@@ -59,7 +59,7 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 	
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:13515/api/SugestApi/Vote");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/Vote");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
@@ -68,7 +68,7 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 	public String Deletee (int id)
 	{
 	
-		String lr = c.target("http://localhost:13515/api/SugestApi/Delete?id="+id).request().delete().readEntity(String.class);
+		String lr = c.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/Delete?id="+id).request().delete().readEntity(String.class);
 		return lr;
 	
 	}
@@ -78,7 +78,7 @@ public class Sugestresp implements SugestrespRemote, SugestrespLocal {
 	
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:13515/api/SugestApi/etat");
+		WebTarget target = client.target("http://apidotnet.eu-west-1.elasticbeanstalk.com/api/SugestApi/etat");
 		Invocation.Builder invocationBuilder = target.request();
 		Response response = invocationBuilder.put(Entity.entity(s, MediaType.APPLICATION_JSON));
 		return response.readEntity(String.class);
