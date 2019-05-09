@@ -154,7 +154,7 @@ public class suggestion {
 				.put("Idsug", id)
 				.toString();
 		sug.etat(jsonString);
-		return "Panelsugst?faces-redirect=true";
+		return "listadmin?faces-redirect=true";
 	}
 
 	public int getId() {
